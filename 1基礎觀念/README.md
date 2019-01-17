@@ -43,10 +43,11 @@ fun main() {
 > var title:Any = "kotlin"  
 > title = 12
 
+> 
 	var pair = "Everest" to 8848;
 	//create pair using to infix method	
-
-
+	
+> 
 	var pair2 = Pair("Everest", 8848);
 	//create Pair using constructor
 
