@@ -32,14 +32,14 @@ fun main() {
 
 ## 資料類型推測
 	var title:String ; //資料宣告 
-  
+>  
 	var title:String = "Kotlin" //沒有使用資料類型推測 
- 
+>
 	var title = "Kotlin"
-
+>
 	var title = "Kotlin"  
 	title = 12 //錯誤
-
+>
 	var title:Any = "kotlin"  
 	title = 12
 
