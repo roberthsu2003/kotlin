@@ -1,78 +1,63 @@
-# 遞增運算子和遞減運算子
-### 使用 ++ 和 --
-	++speed //pre increment
-	--speed //pre decrement
-	speed++ //post increment
-	speed-- //post decrement
+# 自訂的getter和setter
 
-### 先運算再執行
-	var speed = 1.0
-	println(++speed) // Prints: 2.0
-	println(speed)   // Prints: 2.0
+### 簡易constructor
+	class Fruit(var weight: Double,
+	                    val fresh: Boolean,
+	                    val ecoRating: Int)
 
-### 先執行再運算
-	var speed = 1.0
-	println(speed++) // Prints: 1.0
-	println(speed) // Prints: 2.0
+### 建立自訂getter 和 setter要使用有body的建立法
+	class Fruit(var weight: Double, val fresh: Boolean, ecoRating: Int)
+	    {
+	        var ecoRating: Int = ecoRating
+	    }
 
-### kotlin 環境呼叫java
-	//Java class declaration
-	        public class Fish {
-	            private int size;
-	            private boolean hungry;
-	            public Fish(int size, boolean isHungry) {
-	                this.size = size;
-	                this.hungry = isHungry;
+### 建立有預設值的property
+	class Fruit(var weight: Double, val fresh: Boolean) {
+	            var ecoRating: Int = 3
 	}
-	            public int getSize() {
-	                return size;
-	}
-	            public void setSize(int size) {
-	                this.size = size;
-	}
-	            public boolean isHungry() {
-	                return hungry;
-	}
-	            public void setHungry(boolean hungry) {
-	                this.hungry = hungry;
-	} }
-
-	//Kotlin class usage
-	        val fish = Fish(12, true)
-	        fish.size = 7
-	        println(fish.size) // Prints: 7
-	        fish.isHungry = true
-	        println(fish.isHungry) // Prints: true
-
-### kotlin 環境呼叫java
-	//Kotlin class declaration
-		class Fish(var size: Int, var hungry: Boolean)
-		
-	//class usage in Java
-		Fish fish = new Fish(12, true);
-		fish.setSize(7);
-		System.out.println(fish.getSize());
-		fish.setHungry(false);
-		System.out.println(fish.getHungry());
-
-### kotlin 呼叫 android java api
-Java method access syntax                                  | Kotlin property access syntax           |
------------------------------------------------------------|-----------------------------------------|
-activity.getFragmentManager()                              | activity.fragmentManager                |
-view.setVisibility(Visibility.GONE)                        | view.visibility = Visibility.GONE       |
-context.getResources().getDisplayMetrics().density         | activity.fragmentManager                |
-
-### 有一些android java api使用is來操作
-
-	class MainActivity : AppCompatActivity() {
-	            override fun onDestroy() { // 1
-	                super.onDestroy()
-	                isFinishing() // method access syntax
-	                isFinishing // property access syntax
-	                finishing // error
-	} }
 	
+### 透過其它屬性計算出其它屬性值
+	class Apple(var weight: Double, val fresh: Boolean) {
+	            var ecoRating: Int = when(weight) {
+	                in 0.5..2.0 -> 5
+	                in 0.4..0.5 -> 4
+	                in 0.3..0.4 -> 3
+	                in 0.2..0.3 -> 2
+	                else -> 1
+	            }
+	}
 	
-### kotlin沒有支援write only(setter)
-	fragment.setHasOptionsMenu(true)
-	fragment.hasOptionsMenu = true // Error!
+### 建立屬性getter和setter
+	class Fruit(var weight: Double) {
+	            var ecoRating: Int = 3
+	            get() {
+	                println("getter value retrieved")
+	                return field
+	            }
+	            set(value) {
+	                field = if (value < 0) 0 else value
+	                println("setter new value assigned $field")
+	            }
+	}
+	// Usage
+	val fruit = Fruit(12.0)
+	val ecoRating = fruit.ecoRating
+	// Prints: getter value retrieved
+	fruit.ecoRating = 3;
+	// Prints: setter new value assigned 3
+	fruit.ecoRating = -5;
+	// Prints: setter new value assigned 0
+	
+
+### 建立read-only get
+	class Fruit(var weight: Double) {
+	          val heavy             // 1
+	          get() = weight > 20
+	      }
+	//usage
+	var fruit = Fruit(7.0)
+	println(fruit.heavy) //prints: false
+	fruit.weight = 30.5
+	println(fruit.heavy) //prints: true
+
+
