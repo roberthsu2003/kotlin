@@ -21,11 +21,12 @@
 	    print(list);
 	}
 ###
-| 定義變數和值    | 參考改變          | 物件改變       |
-|:------------- |:---------------:| -------------:|
-| col 3 is      | some wordy text |         $1600 |
-| col 2 is      | centered        |           $12 |
-| zebra stripes | are neat        |            $1 |
+| 定義變數和值                   | 參考改變          | 物件改變       |
+|:-------------                |:---------------:|:-------------:|
+| val = listOf(1,2,3)          | NO              |  NO           |
+| val = mutableListOf(1,2,3)   | NO              |  YES          |
+| var = listOf(1,2,3)          | YES             |  NO           |
+| var = mutableListOf(1,2,3)   | YES             |  YES          |
 
 
 
