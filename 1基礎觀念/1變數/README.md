@@ -1,12 +1,12 @@
 # 2種變數宣告
 
-###var 宣告變數(可以改變內容)
+### var 宣告變數(可以改變內容)
 	fun main(args: Array<String>) {
 		       var fruit:String =  "orange" 
 		       fruit  = "banana" 
 	}
 
-###val 宣告變數(不可以改變內容)
+### val 宣告變數(不可以改變內容)
 	fun main(args: Array<String>) {
 	        val fruit:String= "orange"
 	        a = "banana" //錯誤
