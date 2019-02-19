@@ -38,3 +38,5 @@
 	   printValue("str", inBracket = true, prefix = "")
 	   printValue("str",inBracket=true, "") //錯誤	    
 	}
+
+> 呼叫java function不可以使用引數名稱

@@ -1,5 +1,6 @@
 # 傳回值
-> 所有function都有傳回值
+> 所有function都有傳回值  
+> 沒有傳回值，可以省略，也可以明確傳回Unit類型
   
 	fun main() {
 	   printSum(3, 5);

@@ -1,8 +1,21 @@
 # 尾部遞迴function
+> ###自已呼叫自已  
+
 ### 傳統遞迴--太多會throw statkOverflowError
 	fun getState(state: State, n: Int): State =
             if (n <= 0) state // 1
             else getState(nextState(state), n - 1)
+ 	
+ 	//other
+ 	fun fact(k: Int): Int {
+         if (k == 0) return 1
+         else return k * fact(k - 1)
+	}
+	
+	
+   
+   
+   
 
 ### 傳統解決方案--不好了解
 	fun getState(state: State, n: Int): State {

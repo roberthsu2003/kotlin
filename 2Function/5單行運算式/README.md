@@ -1,4 +1,4 @@
-# 單行運算式的function
+# 單行運算式的function(single-expression Funciton)
 ### 傳統單行運算式function
 	fun square(x:Int):Int{
 	    //這是單行運算式function
@@ -18,8 +18,13 @@
 	} 
 	
 		
-### 單行運算式可以不使用傳回值，因為kotlin會自我推測
+### 單行運算式可以省略區塊符號和return, 也可以省略定義傳回值，因為kotlin會自我推測
 	fun square(x:Int) = x * x
+> 更多範例
+
+	fun hello() : String = "hello world"
+	fun hello(name: String, location: String): String = "hello to you  $name at $location"
+	fun concat1(a: String, b: String) = a + b
 	
 
 
