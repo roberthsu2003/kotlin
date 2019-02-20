@@ -14,3 +14,17 @@
 	        person.age = 28 //error: read-only property
 	}
 
+### 
+	class Car (var speed: Double)
+	
+	val car: Car = Car(7.4) 
+	car.speed = 9.2
+	val speed = car.speed
+	
+	val car = Car(7.0)
+	println(car.speed) //prints 7.0 
+	car.speed++ 
+	println(car.speed) //prints 8.0 
+	car.speed--
+	car.speed--
+	println(car.speed) //prints: 6.0
