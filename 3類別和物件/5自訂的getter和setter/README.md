@@ -50,6 +50,7 @@
 	
 
 ### 建立read-only get
+### heavy沒有真的值儲存，只是單獨計算
 	class Fruit(var weight: Double) {
 	          val heavy             // 1
 	          get() = weight > 20
@@ -59,5 +60,19 @@
 	println(fruit.heavy) //prints: false
 	fruit.weight = 30.5
 	println(fruit.heavy) //prints: true
+
+### 計算屬性
+	class Car {
+		var usable: Boolean = true 
+		var inGoodState: Boolean = true
+		var crashed: Boolean 
+		
+		get() = !usable && !inGoodState 
+		
+		set(value) { 
+			usable = false 
+			inGoodState = false 
+		}
+	}
 
 
