@@ -6,4 +6,14 @@
 	println(fruit.weight)
 	println(fruit.fresh) // error
 	
+### 有default value
+	class Fruit(var weight:Int=0, var fresh:Boolean=true, val color:String="green");
+	
+	fun main() {
+	    val fruit = Fruit();
+	    println(fruit.weight);
+	    println(fruit.fresh);
+	    println(fruit.color);
+	}
+		
 

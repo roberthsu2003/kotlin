@@ -29,4 +29,25 @@
 	var p2 = Point(2.0, 7.5)
 	p1 += p2
 	println(p1) // prints: Point(x=4.9, y=14.5)
+	
 
+### 會錯誤
+	data class Point(var x:Double, var y:Double){
+	       init{
+	           println("PLoint created $x.$y");
+	       }
+	       
+	       operator fun plus(point:Point) = Point(x + point.x, y + point.y);
+	       operator fun plusAssign(point:Point){
+	           x += point.x;
+	           y += point.y;
+	       }
+	   }
+	   
+	   var p1 = Point(2.9, 7.0);
+	   var p2 = Point(2.0, 7.5);
+	   val p3 = p1 + p2;
+	   println("$p1, $p2, $p3");
+	    
+	   //p1 += p2 ;錯誤
+	

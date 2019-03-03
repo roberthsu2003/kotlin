@@ -29,13 +29,12 @@
 	        // Start activity
 	        ProductDetailsActivity.start(context, productId) // 2
 ###        
-	class Car {
+	class Car(var count:Int) {
 	            init {
 	                count++; 
 	             }
 	            companion object {
-	                var count:Int = 0
-	                private set
+	                var count:Int = 0	                
 	            }
 	}
 	

@@ -15,24 +15,25 @@
 
 ### final method不可以override
 	open class Plant {
-	            var height: Int = 0
-	            fun grow(height: Int) {}
-	        }
-	        class Tree : Plant() {
-	            override fun grow(height: Int) { // Error
-	                this.height += height
-	            }
+	           var height: Int = 0
+	           fun grow(height: Int) {}
+	}
+	class Tree : Plant() {
+	      override fun grow(height: Int) { // Error
+	            this.height += height
+	      }
 	}
 	
 ### 可以override
 	open class Plant {
-	            var height: Int = 0
-	            open fun grow(height: Int) {}
-	        }
-	        class Tree : Plant() {
-	            override fun grow(height: Int) {
-	                this.height += height
-	            }
+	     var height: Int = 0
+	     open fun grow(height: Int) {}
+	 }
+	 
+	class Tree : Plant() {
+	      override fun grow(height: Int) {
+	          this.height += height
+	      }
 	}
 
 ### 可以override height屬性
