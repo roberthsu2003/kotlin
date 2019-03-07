@@ -14,7 +14,7 @@
 	
 ###
 
-	internal class Fruit private constructor {
+	internal class Fruit private constructor() {
 	           var weight: Double? = null
 	           companion object {
 	               fun create() = Fruit()
