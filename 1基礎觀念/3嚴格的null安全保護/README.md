@@ -74,3 +74,11 @@ ArrayList<Int?>? | YES           | YES
 	    println(b?.length)
 	    println(a?.length) // Unnecessary safe call
 	}
+	
+### 使用安全呼叫運算子+let
+	fun main() {
+	    val listWithNulls: List<String?> = listOf("Kotlin", null)
+	    for (item in listWithNulls) {
+	        item?.let { println(it) } // prints A and ignores null
+	    }
+	}

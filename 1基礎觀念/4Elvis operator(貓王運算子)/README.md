@@ -13,3 +13,5 @@
 ### 使用安全呼叫串接運算子 + Elvis運算子
 	val correct = quiz.currentQuestion?.answer?.correct ?: false
 
+
+![Elvis operator](pic1.png)
