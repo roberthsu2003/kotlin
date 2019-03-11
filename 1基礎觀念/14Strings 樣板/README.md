@@ -12,7 +12,7 @@
 	println(message)
 	//Prints: My name is Eva  and I am 27 years old
 	
-### otlin string template, 使用${}
+### kotlin string template, 使用${}
 	val name = "Eva"
 	val message = "My name has ${name.length} characters"
 	println(message) //Prints: My name has 3 characters

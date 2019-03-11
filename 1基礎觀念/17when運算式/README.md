@@ -1,10 +1,13 @@
 # when運算式
-	when (x) {
-	            1 -> print("x == 1")
-	            2 -> print("x == 2")
-	            else -> println("x is neither 1 nor 2")
+	fun main(){
+	    val x = 5
+	    when (x) {
+	        1 -> print("x == 1")
+	        2 -> print("x == 2")
+	        else -> println("x 不是1也不是2")
+	    }
+	    
 	}
-
 ### 當作運算式
 	val message= when (vehicle) {
 	    "Car" -> {

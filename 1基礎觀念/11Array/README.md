@@ -15,12 +15,12 @@
 	val array = longArrayOf(1, 2, 3) // LongArray
 
 ### 使用工廠function建立固定數量的array
-	val array = arrayOfNulls(3) // Prints: [null, null, null]
-	 println(array) // Prints: [null, null, null]
+	val array = arrayOfNulls<Int>(3) // [null, null, null]
+	 println(array[0]) // Prints: null
 
 ###使用Array建構式建立+lambda建立故定數量的array
-	val array = Array (5) { it * 2 }
-	println(array) // Prints: [0, 2, 4, 8, 10]
+	val array = Array(5){it * 2};
+	for (item in array) println(item)
 
 ###存取元素
 	val array = arrayOf(1,2,3)

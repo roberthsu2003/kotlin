@@ -10,5 +10,16 @@
 ~~~
 
 ~~~
+fun main(){
+    var a:Int? = 3;
+    var b:Int? = 10;
+    if (a!! > 2 && b!! < 11){
+        println("a > 2 and b < 11");
+    }
+
+}
+~~~
+
+~~~
 || and && predicate is lazy
 ~~~
