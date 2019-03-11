@@ -1,4 +1,4 @@
-# 安全/不安全轉換
+# 安全/不安全轉型運算(safe/unsafe cast operator)
 
 ### kotlin的2種轉換
 > 安全轉換運算子  
