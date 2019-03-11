@@ -8,7 +8,7 @@
 	Fragment fragment = new ProductFragment();
 	ProductFragment productFragment = (ProductFragment) fragment;
 
-### 不安全轉換運算子
+### 不安全轉換運算子 as
 	val fragment: Fragment = ProductFragment()
 	val productFragment: ProductFragment =  fragment as ProductFragment
 
@@ -17,7 +17,7 @@
 	val productFragment : ProductFragment =  fragment as ProductFragment
 	\\ 錯誤例外 Exception: ClassCastException
 	
-### 安全轉換(可null轉換)
+### 安全轉換(可null轉換) as?
 	val fragment: String = "ProductFragment"
 	val productFragment: ProductFragment? =  fragment as? ProductFragment
 
