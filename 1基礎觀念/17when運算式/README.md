@@ -73,11 +73,26 @@
 	        else -> null
 	}
 	
+### 
+~~~
+
+fun main() {
+    
+    print(getPasswordErrorId(50));
+}
+fun getPasswordErrorId(num: Int) = when {
+	        (num > 50) -> "abc"
+	       (num <= 50) -> "efg"
+	        else -> null
+	}
+	
+~~~
+	
 ###
 	val large:Boolean = true
 	    when(large){
 	        true -> println("Big")
-	        false -> println("Big")
+	        false -> println("small")
 	}
 
 	

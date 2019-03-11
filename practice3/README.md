@@ -84,3 +84,36 @@
 	
 	
 	}
+	
+### ch3_when.kt(四則運算式)
+	fun main(){
+	
+	    val a = 20
+	    val b = 40
+	    println("請輸入4則運算式符號(+,-,*,/)")
+	    val op = readLine()!!.toString();
+	    when (op){
+	        "+" -> println("a + b = ${a + b}")
+	        "-" -> println("a - b = ${a - b}")
+	        "*" -> println("a * b = ${a * b}")
+	        "/" -> println("a / b = ${a / b}")
+	        else -> println("錯誤")
+	    }
+	
+	}
+
+### ch3_when.kt(分數範圍判斷)
+	fun main(){
+	
+	
+	    println("請輸入成績0~100")
+	    val score = readLine()!!.toInt()
+	    when {
+	        score > 90 -> println("優等")
+	        score in 80..89 -> println("甲等")
+	        score in 70..79 -> ("乙等")
+	        score in 60..69 -> ("丙等")
+	        else -> println("不及格")
+	    }
+	
+	}
