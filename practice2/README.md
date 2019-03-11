@@ -1,5 +1,5 @@
 # ch02
-###ch2_計算商及餘數.kt
+### ch2_計算商及餘數.kt
 	fun main(){
     print("請輸入被除數(整數):")
     val a = readLine()!!.toInt()
