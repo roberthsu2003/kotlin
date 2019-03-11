@@ -1,4 +1,4 @@
-# 保證不是null
+# 保證不是null(not null assertion)
 
 ### 語法
 	變數!!
