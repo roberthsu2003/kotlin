@@ -1,8 +1,8 @@
 # 安全/不安全轉型運算(safe/unsafe cast operator)
 
 ### kotlin的2種轉換
-> 安全轉換運算子  
-> 智慧型轉換機制
+> 明確轉換到不同類型->安全轉換運算子(safe cast operator)  
+> 轉換到不同類型或nullable 轉換到 non-nullable -> 智慧型轉換機制(smart cast mechanism)
 
 	//java
 	Fragment fragment = new ProductFragment();
