@@ -219,3 +219,31 @@
 	    println("恭喜!密碼正確!")
 	
 	}
+
+### ch7_break(存錢)
+	fun main(){
+	    var deposite = 0
+	    var count = 0
+	    while (true){
+	        count++
+	        print("請輸入第${count}個月份的存款:")
+	        val n = readLine()!!.toInt()
+	        deposite += n
+	        if(deposite >= 30000) break;
+	    }
+	    println("恭喜!存了${count}個月的總存款為:${deposite}元");
+	
+	}
+
+### ch8_continue(樓層命名)
+	fun main(){
+	    var floor = 0;
+	    print("請輸入本大樓的樓層數:")
+	    val n = readLine()!!.toInt()
+	    println("本大樓具有的樓層數為:")
+	    while (floor <= n){
+	        floor++;
+	        if (floor == 4) continue
+	        print("$floor  ")
+	    }
+	}

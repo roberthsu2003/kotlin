@@ -24,7 +24,7 @@
 	for (i in 5..1) print(i) // Prints nothing
 	
 ### 使用-1漸減
-for (i in 5 downTo 1) print(i) // Prints: 54321
+	for (i in 5 downTo 1) print(i) // Prints: 54321
 
 ### 使用 step 改變漸增值
 	for (i in 3..6 step 2) print(i) // Prints: 35
