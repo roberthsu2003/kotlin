@@ -117,3 +117,105 @@
 	    }
 	
 	}
+	
+### ch4_forJava.java
+
+	public class JavaFor {
+	    public static void main(String[] args){
+	        String str = "Foo Bar";
+	        for(int i=0; i< str.length(); i++){
+	            System.out.println(str.charAt(i));
+	        }
+	    }
+	
+	}
+
+### ch4_forIn.kt(計算總和)
+	fun main(){
+	    var sum = 0;
+	    for (i in 2..10){
+	        sum += i;
+	        println("第${i-1}次迴圈的i=$i,總和為$sum")
+	    }
+	}
+	
+~~~
+	fun main(){
+	    var sum = 0;
+	    for (i in 2..10 step 2){
+	        sum += i;
+	        println("第${i/2}次迴圈的i=$i,總和為$sum")
+	    }
+	}
+~~~	
+
+	fun main(){
+	    var sum = 0;
+	    for (i in 10 downTo 2 step 2){
+	        sum += i;
+	        println("i=$i,總和為$sum")
+	    }
+	}
+
+### ch4_forIn1.kt(計算每星期家庭收支)
+	fun main(){
+	    var sum = 0;
+	    for (i in 1..7){
+	        if (i==7) print("請輸入星期日的支出:")
+	        else print("請輸入星期${i}的支出")
+	
+	        val n = readLine()!!.toInt()
+	        sum += n
+	    }
+	
+	    println("本星期的支出為${sum}元")
+	}
+
+### ch4_forNest.kt(#字三角形)
+	fun main(){
+	    for (i in 1..5){
+	        print("外部迴圈第${i}次迴圈,內部執行次${i}迴圈   ")
+	        for (j in 1..i){
+	            print("#")
+	        }
+	        println()
+	    }
+	}
+	
+### ch4_forNest1.kt(九九乘法表)
+	fun main(){
+	    for (i in 1..9){
+	        for(j in 1..9)
+	            print("${i}*${j}=${i*j}\t")
+	        println()
+	    }
+	}
+	
+### ch5_while(存錢買機車)
+	fun main(){
+	    var deposit = 0
+	    var count = 0
+	    var n:Int? = null
+	
+	    while (deposit < 30000){
+	        count++
+	        print("請輸入第幾個月份的存款:")
+	        n = readLine()!!.toInt()
+	        deposit += n
+	
+	    }
+	    println("您存了${count}個月的總存款為:${deposit}元")
+	
+	}
+	
+### ch6_doWhile(密碼驗證)
+	fun main(){
+	    var pw:String? = null
+	    do {
+	        print("請輸入密碼:")
+	        pw = readLine()
+	    }while(pw != "1234")
+	
+	    println("恭喜!密碼正確!")
+	
+	}
