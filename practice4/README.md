@@ -1,5 +1,11 @@
-# ch04
-### arrayScan.kt(輸入陣列所有元素的值並顯示)
+# ch04 Array
+
+> 基礎觀念-> array  
+> 基礎觀念-> Range
+
+### arrayScan.kt
+> 輸入陣列所有元素的值並顯示  
+
 	import  java.util.Scanner
 	
 	fun main(){
@@ -31,6 +37,7 @@ fun main(){
 
 ### arrayRand.kt
 > 指定亂數給陣列的所有元素，並且以橫向長條圖顯示
+
 	import  java.util.Random
 	
 	fun main(){
@@ -47,3 +54,48 @@ fun main(){
 	        println()
 	    }
 	}
+
+### highScore.kt
+> 輸入分數並顯示最高分  
+
+	fun main(){
+	    print("請輸入人數:");
+	    val studentsCount = readLine()!!.toInt()
+	    val studentScores = IntArray(studentsCount){
+	        print("請輸入第${it+1}個學生的分數:")
+	        readLine()!!.toInt()
+	    }
+	
+	    for (score in studentScores){
+	        print("${score}, ")
+	    }
+	    println()
+	
+	    var max = 0
+	    for (score in studentScores){
+	        if (score > max) max = score
+	    }
+	
+	    println("學生們最高的分數為${max}")
+	
+	}
+
+
+### lotterys.kt
+> 輸入樂透分數，查詢中了幾顆星
+
+	fun main(){
+	    val lotterys = intArrayOf(15, 11, 21, 27, 28, 33)
+	    val nums = IntArray(6){
+	        print("請輸入6個號碼的第${it+1}號碼(0-38):")
+	        readLine()!!.toInt()
+	    }
+	    var matchNum = 0
+	    for (num in nums){
+	        if (num in lotterys) matchNum++
+	    }
+	
+	    println("您中了${matchNum}顆星")
+	
+	}
+	
