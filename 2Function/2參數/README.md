@@ -30,7 +30,7 @@
 	    presentGently(42)
 	}
 	
-	fun presentGently(v:Any){
+	fun presentGently(v:Any){ //使用Any類別，可以使用所有non-nullable的類別
 	    println("Hello. I would like to present you : $v");
 	}
 

@@ -22,9 +22,9 @@
 	    println(sum)
 	}
 	
-### Unit可以被省略
+### kotlin建議是Unit就省略
 
-	fun printSum(a: Int, b:Int):Unit{
+	fun printSum(a: Int, b:Int){
 	    val sum = a + b
 	    println(sum)
 	}
@@ -43,9 +43,10 @@
 	   print(sum)
 	}
 ### 當傳出傳出值時，實作一定要明確傳出
+
 	fun sumPositive(a:Int, b:Int):Int{
 	    if(a > 0 && b > 0){
-	        return a + b;
+	        return a + b; //在if	單行選項內,有可能不被執行
 	    }
 	    //error
 	}
