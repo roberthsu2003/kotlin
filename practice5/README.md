@@ -156,3 +156,135 @@
 	    return Pair(currentMin,currentMax)
 	
 	}
+
+### argumentName.kt
+> 使用引數名稱  
+> 使用引數名稱後,後面的參數也一定要使用引數名稱  
+> java 內建function無法使用
+
+	fun main(){
+	   someFunction(3,2)
+	   someFunction(3,secondParameterName = 2)
+	   someFunction(firstParameterName = 3,secondParameterName = 2)
+	}
+	
+	fun someFunction(firstParameterName:Int, secondParameterName:Int){
+	
+	}
+
+### defaultParameterValue.kt
+> 預設參數值
+
+	fun main(){
+	   someFunction(3)
+	   someFunction(parameterWithoutDefault = 3)
+	   someFunction(parameterWithoutDefault = 3,parameterWithDefault = 10)
+	}
+	
+	fun someFunction(parameterWithoutDefault:Int, parameterWithDefault:Int = 12){
+	
+	}
+
+### vararg.kt
+> 任何數量的引數
+
+	fun main(){
+	    val sum = sum(3,5,9,45,98,75)
+	   println("總和是:${sum}")
+	}
+	
+	fun sum(vararg numbers:Int):Int{
+	    var total = 0
+	    for (value in numbers){
+	        total += value
+	    }
+	    return  total
+	}
+
+### SingleExpressionFunction.kt
+> 單一運算式函式
+
+	fun main(){
+	   print("請輸入正方型的邊長:")
+	    val x = readLine()!!.toInt()
+	    println("正方型的面積是${square1(x)}")
+	}
+	
+	fun square(x:Int):Int{
+	    return  x * x
+	}
+	
+	fun square1(x:Int):Int = x * x
+
+### singleExpressionFunctionWithWhen.kt
+> 單一運算式函式使用When
+
+	fun main(){
+	    print("請輸入學生成績:")
+	    val sum = readLine()!!.toInt()
+	    println("學生的等級是${scoreLevel(sum)}")
+	}
+	
+	fun scoreLevel(score:Int) = when{
+	    score >= 90 -> "優等"
+	    score in 80..89 -> "甲等"
+	    score in 70..79 -> "乙等"
+	    score in 60..69 -> "丙等"
+	    else -> "不及格"
+	}
+
+### TopLevelFunction
+	//Test.kt
+	package  com.exapple
+	
+	fun printOne(){
+	    println(1)
+	}
+	
+	fun printTwo(){
+	    println(2)
+	}
+	
+	fun printThree(){
+	    println(3)
+	}
+	
+	
+	//Main.kt
+	import com.example.*
+
+	fun main(){
+	    printOne()
+	    printTwo()
+	    printThree()
+	}
+
+### usingKotlinFunctionInJavaCode
+	//Min.kt
+	@file:JvmName("Math")
+	@file:JvmMultifileClass
+	
+	package com.example.math
+	fun min(n1:Int, n2:Int) = if (n1 < n2) n1 else n2
+	
+	
+	
+	//Max.kt
+	@file:JvmName("Math")
+	@file:JvmMultifileClass
+	
+	package  com.example.math
+	
+	fun max(n1:Int, n2:Int) = if (n1 > n2) n1 else n2
+	
+	
+	
+	//JavaMain.java
+	import com.example.math.Math;
+
+	public class JavaMain {
+	    public static void main(String[] args){
+	        System.out.println(Math.max(15, 10));
+	        System.out.println(Math.min(15, 10));
+	    }
+	}
