@@ -154,3 +154,179 @@
 	    // person.age = 28 ->錯誤，沒有setter
 	}
 
+
+### java and Kotlin
+
+	//Fish.java
+	//要建立package資料夾  
+	
+
+	package com;
+	
+	public class Fish {
+	    private int size;
+	    private boolean hungry;
+	
+	    public Fish(int size, boolean isHungry){
+	        this.size = size;
+	        this.hungry = isHungry;
+	    }
+	
+	    public int getSize(){
+	        return  size;
+	    }
+	
+	    public void setSize(int size){
+	        this.size = size;
+	    }
+	
+	    public boolean isHungry(){
+	        return hungry;
+	    }
+	
+	    public void setHungry(boolean hungry){
+	        this.hungry = hungry;
+	    }
+	}
+
+	//JavaKotlin.kt
+	//要import com.Fish
+	
+	import com.Fish
+	
+	fun main(){
+	    val fish = Fish(12, true)
+	    fish.size = 7
+	    println(fish.size)
+	    fish.isHungry = true;
+	    println(fish.isHungry)
+	}
+
+
+### kotlin and Java
+	//Fish.kt
+	//建立package com.kotlin
+	package com.kotlin
+	
+	class Fish(var size:Int, var hungry:Boolean)
+
+	//KotlinJava.java
+	//要import com.kotlin.Fish
+	import  com.kotlin.Fish;
+	
+	public class KotlinJava {
+	    public static void main(String[] args){
+	        Fish fish = new Fish(12, true);
+	        fish.setSize(7);
+	        System.out.println(fish.getSize());
+	        fish.setHungry(false);
+	        System.out.println(fish.getHungry());
+	    }
+	}
+
+### GetterSetter.kt
+	//compiler自動建立getter和setter
+	class Fruit(
+	    var weight:Double,
+	    val fresh:Boolean,
+	    val ecoRating:Int)
+	 
+	
+	//使用建構式建立ecoRating的值	
+	class Fruit(var weight:Double, val fresh:Boolean, ecoRating:Int){
+	    var ecoRating:Int = ecoRating
+	}
+	
+	
+	//ecoRating使用預設值	
+	class Fruit(var weight:Double, val fresh:Boolean){
+	    var ecoRating:Int = 3
+	}
+	
+	
+	//ecoRating的值，可以由其計算其它值而取得
+	class Fruit(var weigth:Double, val fresh:Boolean){
+	    var ecoRating :Int = when(weigth){
+	        in 0.5..2.0 -> 5
+	        in 0.4..2.0 -> 4
+	        in 0.3..0.4 -> 2
+	        else -> 1
+	    }
+	}
+	
+	
+	//自訂的getter和setter
+	class Fruit(var weight:Double){
+	    var ecoRating:Int = 3
+	    get() {
+	        println("getter正在傳出值")
+	        return  field
+	    }
+	    set(value){
+	        field = if (value < 0) 0 else value
+	        println("設定完value後的新值是$field")
+	    }
+	}
+	
+	fun main(){
+	    val fruit = Fruit(12.0)
+	    val ecoRating = fruit.ecoRating
+	    fruit.ecoRating = 3
+	    fruit.ecoRating = -5
+	}
+	
+
+
+### Constructors.kt
+	class Fruit(val weight:Int){
+	    var fresh:Boolean? = null;
+	    //次要建構式可以以建立property
+	    //使用this(weight)作為委派給主要
+	    constructor(weight: Int, fresh:Boolean):this(weight){
+	        this.fresh = fresh
+	    }
+	}
+	
+	//也可以指定fresh有default值
+	class Fruit(val weight:Int){
+    var fresh:Boolean = true    
+    constructor(weight: Int, fresh:Boolean):this(weight){
+        this.fresh = fresh
+    }
+	}
+	//所有次要建構式，最後一定要呼叫主要建構式
+	class Fruit(val weight:Int){
+    var fresh:Boolean = true
+    var color:String = "blue"
+    
+    constructor(weight: Int, fresh:Boolean):this(weight){
+        this.fresh = fresh
+     }
+    
+    constructor(weight: Int, fresh:Boolean,color:String):this(weight,fresh){
+        this.color = color
+     }
+	}
+	
+	fun main(){
+	    val fruit = Fruit(10)
+	    println(fruit.weight)
+	    println(fruit.fresh)
+	
+	}
+
+### 有val,var是類別實體屬性,沒有就是建構式參數
+	class Fruit(var weight:Double, fresh:Boolean)
+	val fruit = Fruit(12.0, true)
+	println(fruit.weight)
+	println(fruit.fresh) // error
+
+
+### ConstructorDefaultarguments.kt
+	class Fruit(var weight:Int=0, var fresh:Boolean = true, var color:String = "Green")
+	
+	fun main(){
+	    val fruit1 = Fruit()
+	    val fruit2 = Fruit(7, false)
+	    val fruit3 = Fruit(fresh = false, color = "Blue", weight = 5)
+	}
