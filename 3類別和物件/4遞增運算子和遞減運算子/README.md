@@ -1,16 +1,16 @@
 # 遞增運算子和遞減運算子
 ### 使用 ++ 和 --
-	++speed //pre increment
+	++speed //pre increment再傳出值
 	--speed //pre decrement
-	speed++ //post increment
-	speed-- //post decrement
+	speed++ //先傳出值後post increment
+	speed-- //先傳出值後post decrement
 
-### 先運算再執行
+### 先運算再傳出值
 	var speed = 1.0
 	println(++speed) // Prints: 2.0
 	println(speed)   // Prints: 2.0
 
-### 先執行再運算
+### 先傳出值後運算
 	var speed = 1.0
 	println(speed++) // Prints: 1.0
 	println(speed) // Prints: 2.0
