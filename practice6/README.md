@@ -330,3 +330,97 @@
 	    val fruit2 = Fruit(7, false)
 	    val fruit3 = Fruit(fresh = false, color = "Blue", weight = 5)
 	}
+
+###　inheritance.kt
+	//所有class和method預設是final,所以代表class不可以繼承,method不可以override
+	class Plant
+	class Tree:Plant();//有錯
+	
+	//使用open來解決
+	open class Plant
+	class Tree:Plant()
+	
+	
+	//method也要使用open
+		open class Plant{
+	    var height:Int = 0
+	    open fun grow(height:Int){
+	
+	    }
+	}
+	
+	class Three:Plant(){
+	    override  fun grow(height:Int){
+	        this.height += height
+	    }
+	}
+	
+	//property override 
+	open class Plant{
+    open var height:Int = 0
+    open fun grow(height:Int){
+
+     }
+	}
+	
+	class Three:Plant(){
+	    override var height:Int = super.height
+	    get() = super.height
+	    set(value){
+	        field = value
+	    }
+	    override  fun grow(height:Int){
+	        this.height += height
+	    }
+	}
+	
+	
+		//Three要可被繼承必需加上open,而如果要關閉 grow(), 必需加上final,因為父類別是open
+		open class Plant{
+	     var height:Int = 0
+	    open fun grow(height:Int){
+	
+	    }
+	}
+	
+	open class Three:Plant(){
+	
+	    final override fun grow(height:Int){
+	        this.height += height
+	    }
+	}
+	
+	class Oak:Three(){
+	    //error
+	    override fun grow(height:Int){
+	        this.height += height
+	    }
+	}
+	
+	
+	//抽象類別和方法只可以繼承,被override 實作
+	abstract class Plant{
+     var height:Int = 0
+    abstract fun grow(height:Int)
+	}
+	
+	open class Three:Plant(){
+	
+	    override fun grow(height:Int){
+	        this.height += height
+	    }
+	}
+	
+	class Oak:Three(){
+	    
+	    override fun grow(height:Int){
+	        this.height += height
+	    }
+	}
+	
+	
+	
+		//data Class, 有多幾個功能,equals,hashCode,toString,copy,componentN
+		//data Class不可以是 abstract, inner和 sealed
+		
+		data class Product(var name:String, var price:Double)
