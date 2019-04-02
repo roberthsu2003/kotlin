@@ -23,6 +23,7 @@
 	
 	val car = Car(7.0)
 	println(car.speed) //prints 7.0 
+	//後運算先傳出值
 	car.speed++ 
 	println(car.speed) //prints 8.0 
 	car.speed--
