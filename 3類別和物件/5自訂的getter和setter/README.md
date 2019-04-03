@@ -5,7 +5,7 @@
 	             val fresh: Boolean,
 	             val ecoRating: Int)
 
-### 建立自訂getter 和 setter要使用有body的建立法
+### 建立自訂getter 和 setter要使用在class body內建立
 	class Fruit(var weight: Double, val fresh: Boolean, ecoRating: Int)
 	    {
 	        var ecoRating: Int = ecoRating
