@@ -1,6 +1,6 @@
 # 延遲初始化的屬性
 
->### 一定要是var, non-null,不行是primitive type
+>### 一定要是var, non-nullable,不行是primitive type
 
 ### 一個android範例屬性button延後給值(不切實際的方法)
 
