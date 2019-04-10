@@ -1,4 +1,4 @@
-# 屬性和建構式參數
+# property對constructor
 
 ### 有val,var是類別實體屬性,沒有就是建構式參數
 	class Fruit(var weight:Double, fresh:Boolean)
