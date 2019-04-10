@@ -96,4 +96,24 @@
 	        val plant = Plant()
 	        // error: abstract class can't be instantiated
 	        val tree = Tree()
-	  
+	      
+### data class
+~~~
+使用data class會讓kotlin的compiler自動幫class產一些methods(equals,hasCode,toString,copy,componentN)
+data class不可以是inner,abstract,sealed class
+~~~
+	data class Product(var name:String, var price:Double)
+	
+	
+	fun main(){
+	    val productA = Product("spoon",30.2)
+	    val productB = Product("spoon",30.2)
+	    val productC = Product("Fork",17.4)
+	
+	    println(productA == productA)
+	    println(productA == productB)
+	    println(productA == productC)
+	    println(productA)
+	    println(productC)
+	    
+	}
