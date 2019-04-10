@@ -1,4 +1,4 @@
-# 拆解宣告法
+# Destructive declaration 拆解宣告法
 
 ### 拆解宣告
 	data class Person(val firstName: String, val lastName: String,val height: Int)
