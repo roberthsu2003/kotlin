@@ -1,4 +1,20 @@
-# 重新定義運算子
+# 14 Operator overloading運算子覆載
+
+####內建方法呼叫，取代運算子
+
+| operatior token | corresponding method |
+| ----------- | ------------- |
+| a + b | a.plus(b) |
+| a - b | a.minus(b) |
+| a * b | a.times(b) |
+| a / b | a.div(b) |
+| a % b | a.rem(b) |
+| a..b | a.rangeTo(b) |
+| a += b | a.plusAssign(b) |
+| a -= b | a.minusAssign(b) |
+| a *= b | a.timesAssign(b) |
+| a /= b | a.divAssign(b) |
+
 
 	data class Point(var x: Double, var y: Double) {
 	       operator fun plus(point: Point) = Point(x + point.x, y+ point.y)
@@ -8,7 +24,7 @@
 	    var p1 = Point(2.9, 5.0)
 	    var p2 = Point(2.0, 7.5)
 	    println(p1 + p2)     // prints: Point(x=4.9, y=12.5)
-	    println(p1 * 3)      // prints: Point(x=8.7, y=21.0)
+	    println(p1 * 3)      // prints: Point(x=5.8, y=37.5)
 
 ###也可以這樣寫
 	p1.plus(p2)
