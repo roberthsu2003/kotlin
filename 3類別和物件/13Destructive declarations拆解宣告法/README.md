@@ -1,12 +1,15 @@
-# Destructive declaration 拆解宣告法
+# Destructive declaration 拆解的宣告
 
 ### 拆解宣告
+~~~
+將物件的property拆解出來成為變數
+~~~
 	data class Person(val firstName: String, val lastName: String,val height: Int)
-	        val person = Person("Igor", "Wojda", 180)
-	        var (firstName, lastName, height) = person
-	        println(firstName) // prints: "Igor"
-	        println(lastName) // prints: "Wojda"
-	        println(height) // prints: 180
+	val person = Person("Igor", "Wojda", 180)
+	var (firstName, lastName, height) = person
+	println(firstName) // prints: "Igor"
+	println(lastName) // prints: "Wojda"
+	println(height) // prints: 180
 	        
 ### 上面拆解宣告的方式
 	val person = Person("Igor", "Wojda", 180)
