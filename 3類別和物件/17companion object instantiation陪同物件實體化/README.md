@@ -1,4 +1,7 @@
-# 類別的陪同物件實體化
+# companion object instantiation類別的陪同物件實體化
+~~~
+companion object 是lazy,代表只有被第一次使用時，才會初初始化。所謂第一次使用的方法有，當companion object的成員初呼叫, 所以在class的init內，去呼叫companion的成員。所以在class初始化
+~~~
 
 ###陪同物件init
 	class Car {

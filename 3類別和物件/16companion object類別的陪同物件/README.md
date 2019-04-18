@@ -1,13 +1,16 @@
-# 類別的陪同物件
-
-###語法
+# companion object類別的陪同物件
+~~~
+相對於java,kotlin無法定義static property 和 static method, 但kotlin使用companion object來對應 
+~~~
+![companion object](pic1.png)
+### 語法
 	class ProductDetailsActivity {
 	            companion object {
 	            } 
 	}
 
 
-###實作
+### android 實作
 	//ProductDetailsActivity.kt
 	        class ProductDetailsActivity : AppCompatActivity() {
 	            override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,17 +31,20 @@
 	}
 	        // Start activity
 	        ProductDetailsActivity.start(context, productId) // 2
-###        
-	class Car(var count:Int) {
-	            init {
-	                count++; 
-	             }
-	            companion object {
-	                var count:Int = 0	                
-	            }
+### companion object 實作       
+	class Car{
+	    init{
+	        count++
+	    }
+	    companion object {
+	        var count:Int = 0
+	        private set
+	    }
 	}
 	
-	println(Car.count) // Prints 0
-	Car()
-	Car()
-	println(Car.count) // Prints: 2
+	fun main(){
+	    println(Car.count) // 0
+	    Car()
+	    Car()
+	    println(Car.count) // 2
+	}
