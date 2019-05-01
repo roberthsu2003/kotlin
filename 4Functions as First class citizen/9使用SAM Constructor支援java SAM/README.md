@@ -1,4 +1,4 @@
-# 使用SAM Constructor支援java SAM
+# java SAM support in kotlin
 ###java7語法
 	//Java
 	 button.setOnClickListener(new OnClickListener() {

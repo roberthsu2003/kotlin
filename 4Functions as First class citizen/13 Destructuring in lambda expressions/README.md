@@ -1,10 +1,11 @@
-# 使用lambda解構架構
+# 在lambda expression內使用解構式
 	data class User(val name: String, val surname: String, val phone: String)
 	
 	val (name, surname, phone) = user
 	
-###使用lambda
-	val showUser: (User) -> Unit = { (name, surname, phone) ->
+### 使用lambda
+	//解構User
+	val showUser: (User) -> Unit = { (name, surname, phone) ->  
 	      println("$name $surname have phone number: $phone")
 	}
 	
@@ -23,14 +24,14 @@
 	           /* code */ 
 	} // 3
 
-###解構部份資料
+### 解構部份資料
 	val f: (User)->Unit = { (name, surname) -> /* code */ }
 	
-###在解構中使用底線
+### 在解構中使用底線
 	val f: (User)->Unit = { (name, _, phone) -> /* code */ }
 	val third: (List<Int>)->Int = { (_, _, third) -> third }
 
-###使用推測類型參數資料類型
+### 使用推測類型參數資料類型
 	val f = { (name, surname): User -> /* code */ } //1
 	
 ###
@@ -39,7 +40,7 @@
 	val f: (User)->Unit = { (name, surname) ->
 	          /* code */ } // 2
 	
-###解構在android的運用
+### 解構在android的運用
 	val map = mapOf(1 to 2, 2 to "A")
 	val text = map.map { (key, value) -> "$key: $value" }
 	println(text) // Prints: [1: 2, 2: A]

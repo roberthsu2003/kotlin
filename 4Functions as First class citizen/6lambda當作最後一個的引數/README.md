@@ -1,4 +1,4 @@
-# lambda當作最後一個的引數
+# last lambda in argument convention
 
 	fun longOperationAsync(a: Int, callback: ()->Unit) {
 	            // ...
@@ -8,7 +8,7 @@
             hideProgress()
 	}
 
-###實例運用
+### 使用kotlin standard library thread實例運用
 	public fun thread(
 	            start: Boolean = true,
 	            isDaemon: Boolean = false,
