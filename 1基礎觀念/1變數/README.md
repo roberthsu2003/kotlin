@@ -1,6 +1,10 @@
 # 2種變數宣告
 
 ### var 宣告變數(可以改變內容)
+```
+var 就像是 non-final 變數(java)
+val 就像是 final 變數(java)
+```
 	fun main(args: Array<String>) {
 		       var fruit:String =  "orange" 
 		       fruit  = "banana" 
