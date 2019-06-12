@@ -1,5 +1,5 @@
 # 安全/不安全轉型運算(safe/unsafe cast operator)
-
+### kotlin 有轉型運算子 as 運算子 
 ### kotlin的2種轉換
 > 明確轉換到不同類型->安全轉換運算子(safe cast operator)  
 > 轉換到不同類型或nullable 轉換到 non-nullable -> 智慧型轉換機制(smart cast mechanism)
@@ -8,7 +8,8 @@
 	Fragment fragment = new ProductFragment();
 	ProductFragment productFragment = (ProductFragment) fragment;
 
-### 不安全轉換運算子 as
+### 不安全轉換運算子(unsafe cast operator) as
+
 	val fragment: Fragment = ProductFragment()
 	val productFragment: ProductFragment =  fragment as ProductFragment
 
@@ -17,7 +18,7 @@
 	val productFragment : ProductFragment =  fragment as ProductFragment
 	\\ 錯誤例外 Exception: ClassCastException
 	
-### 安全轉換(可null轉換) as?
+### 安全轉換(safe cast operator) as? 或稱為nullable cast
 	val fragment: String = "ProductFragment"
 	val productFragment: ProductFragment? =  fragment as? ProductFragment
 
