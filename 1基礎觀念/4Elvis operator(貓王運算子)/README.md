@@ -7,7 +7,7 @@
 	fun main() {
 	    var b: String? = null   
 	    val l: Int = if (b != null) b.length else -1
-	    println(l);
+	    println(l)
 	}
 
 ### 使用 Elvis operator

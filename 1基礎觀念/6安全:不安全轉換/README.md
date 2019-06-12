@@ -17,7 +17,7 @@
 	val productFragment : ProductFragment =  fragment as ProductFragment
 	\\ 錯誤例外 Exception: ClassCastException
 	
-### 安全轉換(可null轉換) as?
+### 安全轉換(nullable cast) as?
 	val fragment: String = "ProductFragment"
 	val productFragment: ProductFragment? =  fragment as? ProductFragment
 
@@ -28,6 +28,11 @@
 ### 也可以配合Elvis operator
 	val fragment: String = "ProductFragment"
 	val productFragment: ProductFragment = fragment as? ProductFragment ?: ProductFragment()
+	
+```
+不安全轉換(as):轉換失敗會丟出ClassCastException
+安全轉換(as?):轉換失敗傳出null
+```
 
 ### android應用
 	var productFragment: ProductFragment? = supportFragmentManager.findFragmentById(R.id.fragment_product) as? ProductFragment

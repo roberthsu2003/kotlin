@@ -14,15 +14,15 @@
 	title = 12 // 1, Error
 
 
-### 使用Any類型，代表可以使用任何形別
+### 使用Any類型，代表可以使用任何形別,java的是primitive類型
 
 	var title: Any = "Kotlin"
 	title = 12
 
-### 推測沒有被限定一定要是值，也可以是function
+### 推測沒有被限定一定要是值，也可以是function(mac 使用control+shift+p 可以檢查資料類型)
 	var total = sum(10, 20)
 	
-### 類型推測也可使用泛型
+### 類型推測也可推測泛型
 	var persons = listOf(personInstance1, personInstance2)
 	// 推測類型為: List<Person> ()
 

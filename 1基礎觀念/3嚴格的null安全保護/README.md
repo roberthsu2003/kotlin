@@ -1,11 +1,13 @@
-# 嚴格的null安全保護
+# 嚴格的null安全保護(Strict null Safety)
 
-為避免產生NullPointerException，使用可null能力的安全保護機制(類型加入可null參考, 不可null參考)
+為避免產生NullPointerException，使用可null能力的安全保護機制(類型加入可null參考, 不可null參考)  
+新世代語言已經將null從runtime error 轉換為 compile error 
+
 
 	val age: Int = null //錯誤不可null
 	val name: String? = null //可null
 
-### 不可使用-可null-直接呼叫方法，必需先使用null檢查
+### 不可使用- nullable -直接呼叫方法，必需先使用null檢查
 	val name: String? = null
 	name.toUpperCase() //錯誤
 
@@ -14,6 +16,7 @@
  Int          | Int?
 String        | String?
 Float         | Float?
+MyCustomClass | MyCustomClass?
 
 ### 
 	var nullableVehicle: Vehicle?

@@ -1,19 +1,19 @@
 # 智慧型轉換/資料類型轉換
 ### java沒有智慧型轉換
 	//Java
-	        if (animal instanceof Fish){
-	            Fish fish = (Fish) animal;
-	            fish.isHungry();
-	            //or
-	            ((Fish) animal).isHungry();
-	        }
+	if (animal instanceof Fish){
+	    Fish fish = (Fish) animal;
+	    fish.isHungry();
+	    //or
+	    ((Fish) animal).isHungry();
+	}
 	
 ### kotlin有智慧型轉換
 	if(animal is Fish) {
-	            animal.isHungry()
+	    animal.isHungry()
 	}
 	
-	//demo1
+	//demo1 (在{}限定範圍內的智慧型轉換)
 	fun demo(x: Any) {
 	    if (x is String) {
 	        print(x.length) // x is automatically cast to String
@@ -22,7 +22,7 @@
 	
 	//demo2
 	fun demo(x: Any) {
-    if (x !is String) return
+    if (x !is String) return //在下方全部都已智慧型轉換
     
     print(x.length) // x is automatically cast to String
     
