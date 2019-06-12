@@ -18,11 +18,10 @@
 	val productFragment : ProductFragment =  fragment as ProductFragment
 	\\ 錯誤例外 Exception: ClassCastException
 	
-<<<<<<< HEAD
+
 ### 安全轉換(nullable cast) as?
-=======
 ### 安全轉換(safe cast operator) as? 或稱為nullable cast
->>>>>>> c682d0236b85a03f7adc1e9e8fab51d756f12344
+
 	val fragment: String = "ProductFragment"
 	val productFragment: ProductFragment? =  fragment as? ProductFragment
 

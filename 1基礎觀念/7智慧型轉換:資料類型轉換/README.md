@@ -11,11 +11,8 @@
 	
 ### kotlin有智慧型轉換
 	if(animal is Fish) {
-<<<<<<< HEAD
-	    animal.isHungry()
-=======
-	  animal.isHungry() //不需要再用 as 或 as?
->>>>>>> c682d0236b85a03f7adc1e9e8fab51d756f12344
+		animal.isHungry()
+		animal.isHungry() //不需要再用 as 或 as?
 	}
 	
 	//demo1 (在{}限定範圍內的智慧型轉換)
@@ -55,6 +52,6 @@
 	 
 ### 利用if的延遲判斷
 	if (animal is Fish && animal.isHungry()) {
-	            println("Fish is hungry")
+	   println("Fish is hungry")
 	}
 	  
