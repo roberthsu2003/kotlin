@@ -1,11 +1,11 @@
-# 原生資料類型-Numbers
+# Arrays
 	val array = arrayOf(1,2,3) //推測為Array<Int>
 	
-### 明確指定類型
+### 使用明確指定類型
 	val array2: Array<Short> = arrayOf(1,2,3)
 	val array3: Array<Long> = arrayOf(1,2,3)
 
-### kotlin提供提昇效能的array
+### kotlin提供提昇效能的array(因為Short,Int,Long都是物件)使用下列function 可以提昇效能
 	val array =  shortArrayOf(1, 2, 3)
 	val array =  intArrayOf(1, 2, 3)
 	val array =  longArrayOf(1, 2, 3)
