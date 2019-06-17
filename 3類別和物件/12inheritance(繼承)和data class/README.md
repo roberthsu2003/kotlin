@@ -81,7 +81,7 @@
 
 ### abstract class,method
 ~~~
-抽象類別不充許實體化，只可以被繼承。預設自已是open，裏面所有的member預設也是open
+抽象類別不允許實體化，只可以被繼承。預設自已是open，裏面所有的member預設也是open
 抽象metho不充許實作body。只充許子類別使用override實作
 ~~~
 	abstract class Plant {
