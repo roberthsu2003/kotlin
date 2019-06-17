@@ -1,9 +1,8 @@
-# 可讀寫屬性vs唯讀屬性
+# 可讀寫屬性vs唯讀屬性(read-write versus read-only property)
 ### 使用var 和 val
 	fun main() {
 	    class Person(
-	            var name: String,
-	            // Read-write property (generated getter and setter)
+	            var name: String,  // Read-write property (generated getter and setter)
 	            val age: Int      // Read-only property (generated getter)
 	        )
 	        //usage
@@ -14,8 +13,7 @@
 	        person.age = 28 //error: read-only property
 	}
 
-### 
-	class Car (var speed: Double)
+### class Car (var speed: Double)
 	
 	val car: Car = Car(7.4) 
 	car.speed = 9.2

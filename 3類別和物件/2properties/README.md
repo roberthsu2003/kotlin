@@ -1,4 +1,8 @@
-# 類別屬性
+# 類別屬性(properties)
+```
+kotlin的類別屬性,是由背後的欄位和getter,setter所組合而成的
+屬性可以被定義在top-level,也可以被定義成member(在class和interface內)
+```
 ### java的類別定義
 
 	public class Person {
@@ -33,16 +37,16 @@
 	}
 	
 ### kotlin的類別定義
-> 類別使用次要建構構式
+> 類別使用次要建構構式(secondary constructors)
 
 	class Person {
-	            var name: String
-				  var age: Int			    
-	            constructor(name: String, age: Int) {
-	                this.name = name
-	                this.age = age
-	                print("person的實體被建立");
-				     } 
+	     var name: String
+			var age: Int			    
+	     constructor(name: String, age: Int) { 
+	          this.name = name
+	          this.age = age
+	          print("person的實體被建立");
+			} 
 	}
 	
 	fun main() {
@@ -51,7 +55,7 @@
 	    println("person 年齡:${person.name}");
 	}
 	
-### kotlin使用主要建構式
+### kotlin使用主要建構式(primary constructor)
 >主要建構式相對於次要建構式，是不可以有程式區塊，所以需要有init程式區塊
 
 	class Person constructor(name:String, age:Int){
@@ -74,8 +78,8 @@
 >移除init區塊，將參數直接給property
 
 	class Person constructor(name:String, age:Int){
-	            var name = name
-				var age = age
+	     var name = name
+			var age = age
 	}
 	
 	fun main() {
@@ -87,7 +91,7 @@
 ### kotlin使用再簡潔的主要建構式
 > 如果property沒有自訂的getter和setter可以將使用在主要建構式上使用var,val,同時建立property，並且將參數值給property
 
-	class Person constructor(var name:String,var age:Int)
+	class Person public constructor(var name:String,var age:Int)
 	
 	fun main() {
 	    val person = Person("robert",28);
@@ -95,7 +99,7 @@
 	    println("person 年齡:${person.name}")
 	}
 
-### kotlin使用再簡潔的主要建構式(不使用public,private)
+### kotlin使用再簡潔的主要建構式(如果主建構式式沒有使用public,private)
 	class Person(var name:String,var age:Int)
 	
 	fun main() {
@@ -104,7 +108,7 @@
 	    println("person 年齡:${person.name}");
 	}
 
-### kotlin使用再簡潔的主要建構式(不使用public,private)(增加可讀性)
+### kotlin使用再簡潔的主要建構式(如果主建構式式沒有使用public,private)(增加可讀性)
 	class Person(
 	    var name:String,
 	    var age:Int

@@ -71,6 +71,16 @@
 	println(fruit.heavy) //prints: false
 	fruit.weight = 30.5
 	println(fruit.heavy) //prints: true
+	
+### heavy沒有真的值儲存，只是單獨計算(也可以這樣寫)
+	class Fruit(var weight: Double) {
+	    val heavy = weight > 20;
+	}
+	//usage
+	var fruit = Fruit(7.0)
+	println(fruit.heavy) //prints: false
+	fruit.weight = 30.5
+	println(fruit.heavy) //prints: true
 
 ### 計算屬性
 	class Car {

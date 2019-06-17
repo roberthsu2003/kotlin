@@ -15,34 +15,36 @@
 	println(speed++) // Prints: 1.0
 	println(speed) // Prints: 2.0
 
-### kotlin 環境呼叫java
+### kotlin環境呼叫java
 	//Java class declaration
-	        public class Fish {
-	            private int size;
-	            private boolean hungry;
-	            public Fish(int size, boolean isHungry) {
-	                this.size = size;
-	                this.hungry = isHungry;
+	public class Fish {
+	     private int size;
+	     private boolean hungry;
+	     public Fish(int size, boolean isHungry) {
+	          this.size = size;
+	          this.hungry = isHungry;
+		 }
+	     public int getSize() {
+	          return size;
+		 }
+	    public void setSize(int size) {
+	          this.size = size;
+		 }
+	    public boolean isHungry() {
+	          return hungry;
+		 }
+	    public void setHungry(boolean hungry) {
+	         this.hungry = hungry;
+		}
 	}
-	            public int getSize() {
-	                return size;
-	}
-	            public void setSize(int size) {
-	                this.size = size;
-	}
-	            public boolean isHungry() {
-	                return hungry;
-	}
-	            public void setHungry(boolean hungry) {
-	                this.hungry = hungry;
-	} }
 
-	//Kotlin class usage
+	//Kotlin class usage -使用kotlin property access syntax
 	        val fish = Fish(12, true)
 	        fish.size = 7
 	        println(fish.size) // Prints: 7
 	        fish.isHungry = true
 	        println(fish.isHungry) // Prints: true
+	
 
 ### kotlin 環境呼叫java
 	//Kotlin class declaration
@@ -70,7 +72,8 @@ context.getResources().getDisplayMetrics().density         | activity.fragmentMa
 	                isFinishing() // method access syntax
 	                isFinishing // property access syntax
 	                finishing // error
-	} }
+		} 
+	}
 	
 	
 ### kotlin沒有支援write only(setter)
