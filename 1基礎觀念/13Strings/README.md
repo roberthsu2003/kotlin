@@ -1,7 +1,8 @@
 # Strings
 ### 使用索引運算子存取字元
 ~~~
-和java String操控一樣，這些多的是被定義在extensions
+使用和java String一樣Class，這些多的功能是被定義在extensions
+kotlin在處理時，比java有多一些功能，可以使用indexing operator存取字元
 ~~~
 	val str = "abcd" 
 	println (str[1]) // Prints: b

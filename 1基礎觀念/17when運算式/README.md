@@ -52,6 +52,7 @@
 	println(risk) // Prints: major risk
 	
 ### 
+
 	val riskAssessment = 80
 	val handleStrategy = "Warn"
 	val risk = when (riskAssessment) {

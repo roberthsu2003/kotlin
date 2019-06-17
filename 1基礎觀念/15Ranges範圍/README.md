@@ -1,7 +1,7 @@
 # Ranges範圍
 ### 一個範圍
 	val intRange = 1..4 // type IntRange (i>=1&&i<=4)
-	val charRange= 'b'..'g' // type CharRange 'b'to'g'
+	val charRange= 'b'..'g' // type CharRange 'b'to'g',使用單引號
 
 ### Int,Long和Char類型的範圍可以使用for... each巡圈
 	for (i in 1..5) print(i) // Prints: 12345
