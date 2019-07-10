@@ -20,9 +20,18 @@
 	         override fun onServiceConnected(name: ComponentName?,
 	             service: IBinder?) { }
 	}
-	
+### object decoration
+```
+建立Singleton的class
+object SQLiteSingleton{
+	fun getAllUsers():List<User>{
+		//...
+	}
+}
+```
 ### 使用object expression
 ~~~
+
 快速建立一個暱名class並且立刻建一個實體
 ~~~
 	interface Player {
