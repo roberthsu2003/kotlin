@@ -1,4 +1,4 @@
-# 11Constructor with default arguments(建構式使用預設引數值)
+# Constructor with default arguments(建構式使用預設引數值)
 
 ### 有val,var是類別實體屬性,沒有就是建構式參數
 	class Fruit(var weight:Double, fresh:Boolean)

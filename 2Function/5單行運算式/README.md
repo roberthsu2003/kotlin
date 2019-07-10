@@ -41,7 +41,8 @@
 	        "patient.email" -> booking?.patient?.email
 	        "patient.phone" -> booking?.patient?.phone
 	        "comment" -> booking?.comment
-	else -> null }
+			  else -> null 
+	}
 
 ###單行運算式搭配多重串接運算
 	fun textFormatted(text: String, name: String) = text

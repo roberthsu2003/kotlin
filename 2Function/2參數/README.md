@@ -1,6 +1,7 @@
 # 參數
 * 必需有明確的參數名稱和類形
-* 所有的參數是唯讀的   
+* 所有的參數是唯讀的 
+* java的參數是mutable  
 
 ### 可以定義和區域變數相同的參數名稱，但這是不好的習慣
 		fun findDuplicates(list:List<Int>):Set<Int>{

@@ -1,5 +1,5 @@
 # 尾部遞迴function
-> ###自已呼叫自已  
+> ### 自已呼叫自已  
 
 ### 傳統遞迴--太多會throw statkOverflowError
 	fun getState(state: State, n: Int): State =
