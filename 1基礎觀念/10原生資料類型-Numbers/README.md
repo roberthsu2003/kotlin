@@ -28,7 +28,7 @@ Byte          | 8
 ### 可以用數值來改變推測
 	val a: Int = 1
 	val b = a + 1 // 推測Int
-	val b = a + 1L // 推測為Long
+	val b = a + 1L // 推測為Long //錯誤
 
 ### kotlin數值表示
 ~~~
