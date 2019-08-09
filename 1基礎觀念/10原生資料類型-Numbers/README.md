@@ -12,7 +12,7 @@ Byte          | 8
 	var weight : Int = 12
 	var truckWeight: Long = weight // 錯誤
 
-### 需要明確轉換為目同資料類型
+### 需要明確轉換為相同資料類型
 	var weight:I nt = 12
 	var truckWeight: Long = weight.toLong()
 ### 數值可以轉換的方法
