@@ -5,6 +5,7 @@
 ```
 var 就像是 non-final 變數(java)
 val 就像是 final 變數(java)
+val 可以有自己的getter
 ```
 
 	fun main(args: Array<String>) {
@@ -19,7 +20,7 @@ val 就像是 final 變數(java)
 	}
 
 
-### val 
+### val只有自己是不可變,但可以改變参考的物件
 	fun main() {
 	    val list = mutableListOf("a", "b", "c");
 	    list = mutableListOf("d", "e"); //錯誤
