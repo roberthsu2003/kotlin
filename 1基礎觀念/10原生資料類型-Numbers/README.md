@@ -12,10 +12,10 @@ Byte          | 8
 	var weight : Int = 12
 	var truckWeight: Long = weight // 錯誤
 
-###需要明確轉換為目同資料類型
+### 需要明確轉換為目同資料類型
 	var weight:I nt = 12
 	var truckWeight: Long = weight.toLong()
-###數值可以轉換的方法
+### 數值可以轉換的方法
 ~~~
 > toByte():Byte
 > toShort():Short
@@ -30,7 +30,7 @@ Byte          | 8
 	val b = a + 1 // 推測Int
 	val b = a + 1L // 推測為Long
 
-###kotlin數值表示
+### kotlin數值表示
 ~~~
 > 27 //Int
 > 27L //Long
@@ -38,7 +38,7 @@ Byte          | 8
 > 0b11011 //2進位
 ~~~
 
-###浮點數值
+### 浮點數值
 ~~~
 > 27.5 //Double
 > 27.5F //Float
