@@ -14,7 +14,7 @@
 	title = 12 // 1, Error
 
 
-### 使用Any類型，代表可以使用任何形別,java的是primitive類型
+### 使用Any類型，代表可以使用任何形別,Any就像java的Object類別
 
 	var title: Any = "Kotlin"
 	title = 12
