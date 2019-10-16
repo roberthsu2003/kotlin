@@ -1,8 +1,40 @@
 # ch01
-### ch1_print.kt
-	fun main(){
-	    print("Hello!World")
-	}
+### print
+```
+print() --> 不換行
+println() --> 換行
+```
+
+```
+fun main(){
+	print("Hello!World")
+}
+```
+	
+```
+當行註解 
+//
+
+多行註解
+/*
+
+*/
+```
+
+```
+println("晚安!" + " 吃晚餐沒?");
+字串的連結 --> +
+```
+
+```
+println("晚安!\n吃晚餐沒?");
+```
+
+```
+//自由格式敘述
+1.單字中間不可插入空白
+2.字串值不可中途換行
+```
 
 
 ### ch2_readLine.kt
