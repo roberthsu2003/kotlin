@@ -13,6 +13,6 @@ fun main(){
 fun main(){
     print("請輸入姓名:")
     val name = readLine()!!
-    print("歡迎" + name + "使用本軟體")
+    print("歡迎" + name + "加入學習kotlin")
 }
-```
+``` 
