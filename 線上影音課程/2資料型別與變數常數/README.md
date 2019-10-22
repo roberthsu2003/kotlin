@@ -9,12 +9,12 @@
 var 宣告變數(可以改變內容)
 
 fun main() {
-	       var number = 42
-			  var message = "Hello"
-			  number = 10
-			  number += 7
-			  println(number)
-			  println(message + " there")
+	var number = 42
+	var message = "Hello"
+	number = 10
+	number += 7
+	println(number)
+	println(message + " there")
 }
 
 
@@ -26,7 +26,7 @@ fun main() {
 
 const val 宣告常數(不可以改變內容)
 fun main() {
-        const val x = 2
+        const val X = 2
 }
 
 ```
