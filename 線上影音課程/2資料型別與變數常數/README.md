@@ -38,6 +38,52 @@ fun main() {
 *  變數名稱中英文字母的大小寫是有區別的。Apple,apple
 *  駝峰式的命名法
 
+## 基本(原生)資料型別
+
+#### 整數型別
+| 類型 | 位元組 | 最小值 | 最大值 |
+|:----|:------|:------|:------|
+| Long | 8 | -9223372036854775808 | 9223372036854775807 |
+| Int | 4 | -2147483648 | 2147483647 |
+| Short | 2 | -32768 | 32767 |
+| Byte | 1 | -128 | 127 |
+
+#### 整數純值表達式
+```
+fun main(){
+	val anInt = 3
+	val anotherInt = 2147483647
+	val aLong = 2147483648
+	val aBetterLong = 2147483649L
+	val aSmallLong = 3L
+	val aShort: Short = 32767
+	val anotherShort = 1024.toShort()
+	val aByte: Byte = 65
+	val anotherByte = -32.toByte()
+}
+```
+
+#### 整數/整數=整數,整數/Double = Double
+```
+fun main(){
+	println(7 / 3)            // Prints 2
+	println(7 / 3.0)          // Prints 2.3333333333333335
+	val x = 3
+	println(7 / x)            // Prints 2
+	println(7 / x.toDouble()) // Prints 2.3333333333333335
+}
+```
+
+#### 浮點數和其它型別
+| 類型 | 位元組 | 說明 |
+|:----|:------|:--------------|
+| Double | 8 | 16-17位數 |
+| Float | 4 | 6-7位數 |
+| Char | 2 | UTF-16 |
+| Boolean | 1 | true,false |
+
+
+
 
 ## 資料型別的推測
 
@@ -88,7 +134,7 @@ fun main() {
 #### 明確宣告
 	var age: Int = 18
 
-#### 值表達式無沒推測為正確類型時，可以使用明確宣告
+#### 值表達式無法推測為正確類型時，可以使用明確宣告
 	var age: Short = 18
 
 #### 使用指定型別的值表達式
@@ -100,52 +146,7 @@ fun main() {
 
 
 
-## 基本(原生)資料型別
-
-#### 整數型別
-| 類型 | 位元組 | 最小值 | 最大值 |
-|:----|:------|:------|:------|
-| Long | 8 | -9223372036854775808 | 9223372036854775807 |
-| Int | 4 | -2147483648 | 2147483647 |
-| Short | 2 | -32768 | 32767 |
-| Byte | 1 | -128 | 127 |
-
-#### 整數純值表達式
 ```
-fun main(){
-	val anInt = 3
-	val anotherInt = 2147483647
-	val aLong = 2147483648
-	val aBetterLong = 2147483649L
-	val aSmallLong = 3L
-	val aShort: Short = 32767
-	val anotherShort = 1024.toShort()
-	val aByte: Byte = 65
-	val anotherByte = -32.toByte()
-}
-```
-
-#### 整數/整數=整數,整數/Double = Double
-```
-fun main(){
-	println(7 / 3)            // Prints 2
-	println(7 / 3.0)          // Prints 2.3333333333333335
-	val x = 3
-	println(7 / x)            // Prints 2
-	println(7 / x.toDouble()) // Prints 2.3333333333333335
-}
-```
-
-#### 浮點數和其它型別
-| 類型 | 位元組 | 說明 |
-|:----|:------|:--------------|
-| Double | 8 | 16-17位數 |
-| Float | 4 | 6-7位數 |
-| Char | 2 | UTF-16 |
-| Boolean | 1 | true,false |
-
-```
-
 fun main() {
     val list = mutableListOf("a", "b", "c");
     list = mutableListOf("d", "e"); //錯誤

@@ -45,10 +45,10 @@
 #### 多行文字
 	fun main() {
 	    val text = """
-	        |Tell me and I forget.
-	        |Teach me and I remember.
-	        |Involve me and I learn.
-	        |(Benjamin Franklin)
+	        Tell me and I forget.
+	        Teach me and I remember.
+	        Involve me and I learn.
+	        (Benjamin Franklin)
 	        """
 	    println(text)
 	    
