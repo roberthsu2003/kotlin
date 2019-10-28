@@ -149,16 +149,9 @@ fun main(){
 
 
 
-```
-fun main() {
-    val list = mutableListOf("a", "b", "c");
-    list = mutableListOf("d", "e"); //錯誤
-    list.remove("a");
-    print(list);
-}
-```
 
 
+## 參考資料型別與val 和 var的關係
 
 ###
 | 定義變數和值                   | 參考改變          | 物件改變       |
@@ -168,3 +161,12 @@ fun main() {
 | var = listOf(1,2,3)          | YES             |  NO           |
 | var = mutableListOf(1,2,3)   | YES             |  YES          |
 
+
+```
+fun main() {
+    val list = mutableListOf("a", "b", "c");
+    list = mutableListOf("d", "e"); //錯誤
+    list.remove("a");
+    print(list);
+}
+```
