@@ -156,10 +156,10 @@ fun main(){
 ###
 | 定義變數和值                   | 參考改變          | 物件改變       |
 |:-------------                |:---------------:|:-------------:|
-| val = listOf(1,2,3)          | NO              |  NO           |
-| val = mutableListOf(1,2,3)   | NO              |  YES          |
-| var = listOf(1,2,3)          | YES             |  NO           |
-| var = mutableListOf(1,2,3)   | YES             |  YES          |
+| val list = listOf(1,2,3)          | NO              |  NO           |
+| val list = mutableListOf(1,2,3)   | NO              |  YES          |
+| var list = listOf(1,2,3)          | YES             |  NO           |
+| var list = mutableListOf(1,2,3)   | YES             |  YES          |
 
 
 ```
