@@ -4,7 +4,19 @@
 	val message = "Hello" // String
 	val m = message[0] // Char
 
-#### 字串格式表達式
+####  kotlin string template, 使用$
+	val name = "Eva"
+	val age = 27
+	val message = "My name is $name and I am $age years old"
+	println(message)
+	//Prints: My name is Eva  and I am 27 years old
+
+#### kotlin string template, 使用${}
+	val name = "Eva"
+	val message = "My name has ${name.length} characters"
+	println(message) //Prints: My name has 3 characters
+
+#### $,${}字串格式表達式
 	val name = "Anne"
 	val yearOfBirth = 1985
 	val yearNow = 2018
@@ -33,7 +45,7 @@
 	    }
 	}
 	
-####strings and + 會自動轉為String
+#### strings and + 會自動轉為String
 	fun main() {
 	    val s = "abc" + 1
 	    println(s + "def")
