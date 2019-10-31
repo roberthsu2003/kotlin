@@ -160,6 +160,7 @@ fun stringToInt(string:String):Int? {
     val anInt = string.toIntOrNull() ?: return null
     val anotherInt = string.toIntOrNull() ?: throw IllegalArgumentException("無法轉換")
     return  anInt
+}
 ```
 #### 使用安全呼叫運算子 + Elvis運算子
 	override fun onCreate(savedInstanceState: Bundle?) {
@@ -179,53 +180,53 @@ fun stringToInt(string:String):Int? {
 	
 ### 使用方法
 ```
-var y: String? = "foo"
-var size: Int = y!!.length
+fun main(){
+    var y:String? = "foo"
+    //保證不是null,使用notNullAssertion運算子 !!
+    var size:Int = y!!.length
 
-fun main(args: Array<String>) {
-    //Declaring boxed String
-    var name: String? = "Little Drops"
-    //Printing the length of the asserted value
-    println("Length of $name is ${name!!.length}")
-    //Setting null to the name variable
+    //定義一個字串
+    var name:String? = "Robert Hsu"
+    println("我名字的長度是${name!!.length}")
+
+    //將name改成null將會造成程式crash
     name = null
-    //This statement will create Null Pointer Exception
-    println("Length of $name is ${name!!.length}")
+    //println("我名字的長度是${name!!.length}")
 }
 ```
 
-## 智慧型轉型
+## non-nullable的智慧型轉換
 ```
-var string: String? = "Hello!"  
-print(string.length) // Compile error 
+import java.lang.RuntimeException
 
-fun main(){  
-	var string: String? = "Hello!"  
-	if(string != null) { // smart cast  
-		print(string.length) // It works now!  
-	}  
-}  
+fun main(){
+    var string:String? = "Hello!"
+    //nullable的變數不可以執行任何動作
+    //println(string.length)
+
+    var string1:String? = "Hello"
+
+    //使用non-nullable的智慧型轉換
+    if (string1 != null){
+        print(string1.length)
+    }
+
+
+    //可以利用if + return ,讓剩下的function程式區塊全部作non-nullable的智慧型轉換
+    val name:String? = "robert"
+    if(name == null) return
+    println(name.length)
+
+    //利用Evils Operator + return,讓剩下的function程式區塊全部作non-nullable的智慧型轉換
+    val anotherName:String? = "Jenny"
+    anotherName ?: return
+    println(anotherName.length)
+
+    //可以利用Evils Operator + throw,讓剩下的function程式區塊全部作non-nullable的智慧型轉換
+    var secondName:String? = "Alice"
+    secondName ?: throw RuntimeException("secondName是null")
+    println(secondName.length)
+
+}
 ```
-
-#### 智慧型轉換可以利用return,讓function剩下範圍都有智慧型轉換
-	fun main() {
-	    val name:String? = "robert";
-	    if (name == null) return
-	    println(name.length);
-	}
-
-### 智慧型轉換可以利用return,讓function剩下範圍都有智慧型轉換
-	fun main() {
-	    var name:String? = "robert";
-	    name ?: return
-	    println(name.length);
-	}
-
-### 智慧型轉換可以利用throw,讓function剩下範圍都有智慧型轉換
-	fun setView(view: View?){
-	    view ?: throw RuntimeException("View is empty")
-	    
-	    view.isShown() //view被轉換為不可null類型
-	 }
-
 
