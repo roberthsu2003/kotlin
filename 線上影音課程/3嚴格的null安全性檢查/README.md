@@ -10,41 +10,47 @@ Float         | Float?
  
 
 ```
-錯誤的方法
-var str: String = "學習kotlin"
-str= null //compilation error
-var a : String = null // compilation error.
+fun main(){
+    var str:String = "學習kotlin"
+    //這是一般變數(none-nullable), 不可以有null
+    //str = null;
+    //var a:String = null;
 
-使用類型+?定義nullable的變數
-var a : String? = null
-var newStr : String? = "Kotlin Null Safety"
-newStr = null
-```
-### 不可使用-可null變數-直接呼叫方法，必需先使用null檢查
+    //使用類型+?定義nullable的變數
+    var a:String? = null;
+    var newStr:String? = "Kotlin null safety"
+    newStr = null;
 
-```
-val name: String? = null
-name.toUpperCase() //錯誤
+    //不可以使用可null變數直接呼叫方法，必需先使用null檢查
+    var name:String? = null
+    //name.toUpperCase() //編譯錯誤
+}
 ```
 
 ## 使用if檢查null
 ```
-var a : String? = null
-if(a!=null)
-{
-	print("The value of a is $a")
-}
-else{
-	print("Sorry a is null")
-}
-```
+fun main(){
+    //使用if檢查null
+    var a1:String? = null;
+    if(a1 != null){
+        println("這a的值是$a1");
+    }else{
+        println("這個值是null");
+    }
 
+    //nullable型別和none-nullable不是同一個型別, nullable是父類別, non-nullable是子類別
+    var nullableInt:Int? = null
+    var anInt = 6
 
-```
-	var nullableInt: Int? = 5
-	var anInt = 6
-	nullableInt= anInt // 正確
-	anInt = nullableInt // 錯誤
+    //正確
+    nullableInt = anInt;
+    println("nullableInt是$nullableInt");
+
+    //錯誤的寫法
+    anInt = nullableInt;
+    println("anInt是$anInt")
+}
+
 ```
 
 ### 比較集合物件的可null的表示法
@@ -92,45 +98,69 @@ fun main() {
 ```	
 ### 使用安全呼叫運算子+let()
 ```
-只有當裏面的值不是null時，才會執行let的運算
-var newString : String?  = "JournalDev.com"
-newString = " Kotlin from Android"
-newString?.let { println("The string value is: $it") }
-newString = null
-newString?.let { println("The string value is: $it") }
+fun main(){
+    var newString:String? = "pcschools.com"
+    newString = "kotlin from Android"
+    //使用let方法來檢查和執行
+    //只有當裏面的值不是null時，才會執行let的運算
+    newString?.let {
+        println("這個newString的值是:$it")
+    }
 
 
-fun main() {
-	val listWithNulls: List<String?> = listOf("Kotlin", null)
-	for (item in listWithNulls) {
-	    item?.let { println(it) } // prints A and ignores null
-	}
-}	
+
+    newString = null
+
+    //使用 ?: run方法來判斷 如果值是 null要執行的動作
+    newString?.let{
+        println("這個newString的值是:$it")
+    } ?: run {
+        println("newString是null");
+    }
+
+    val listWithNulls: List<String?> = listOf("Kotlin", null, "android")
+
+    //使用let()來檢查不是null
+    for (item in listWithNulls) {
+        item?.let { println(it) }
+    }
+
+
+}
 ```
 
 ## Elvis operator(貓王運算子)
 #### 語法
 	first operand ?: second operand
 	
-#### 傳統使用
-	fun main() {
-	    var b: String? = null   
-	    val l: Int = if (b != null) b.length else -1
-	    println(l);
-	}
+```
+fun main(){
+    //傳統使用if檢查是不是null的方法
+    var a:String? = null;
+    val l:Int = if (a != null) a.length else -1
+    println("l的類型是none-nullable的型態，值是:$l")
 
-#### 使用 Elvis operator
-	fun main() {
-	    var b: String? = null   
-	    val l:Int = b?.length ?: -1
-	    println(l);
-	}
-#### 使用 Elvis operator 加上 throw 或 return
-	fun foo(node: Node): String? {
-	    val parent = node.getParent() ?: return null
-	    val name = node.getName() ?: throw IllegalArgumentException("name expected")
-	    // ...
-	}
+    //使用 ?: (Elvis operator(貓王運算子))
+    var b:String? = null
+    val len:Int  = b?.length ?: -1
+    println("len的類型是none-nullable的型態，值是:$len")
+
+    //呼叫會傳出nullable的function
+    println("傳出的值是:${stringToInt("123") ?: "無法轉換"}")
+
+    //同時使用多個安全呼叫運算子 + Elvis運算子
+    val intString:String? = "abc"
+    val secondInt = intString?.toIntOrNull()?.and(3) ?: 0
+    println("secondLen:$secondInt")
+
+}
+
+//使用貓王運算子 + return 或 throw打造出安全的function
+fun stringToInt(string:String):Int? {
+    val anInt = string.toIntOrNull() ?: return null
+    val anotherInt = string.toIntOrNull() ?: throw IllegalArgumentException("無法轉換")
+    return  anInt
+```
 #### 使用安全呼叫運算子 + Elvis運算子
 	override fun onCreate(savedInstanceState: Bundle?) {
 	            super.onCreate(savedInstanceState)
