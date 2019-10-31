@@ -60,6 +60,7 @@ fun main(){
    m = readLine()?.toIntOrNull() ?: 1
 
    println("商=${n/m} 餘數= ${n % m}")
+}
 
 ```
 
