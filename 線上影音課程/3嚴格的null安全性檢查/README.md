@@ -11,7 +11,7 @@ Float         | Float?
 
 ```
 錯誤的方法
-var str: String = "JournalDev Kotlin Archives"
+var str: String = "學習kotlin"
 str= null //compilation error
 var a : String = null // compilation error.
 
