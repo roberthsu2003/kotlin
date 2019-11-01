@@ -28,7 +28,7 @@ fun main(){
     val first = 20
     val second = 35
     var sum = 0
-    println("計算前sum的值是$sum");
+    println("計算前sum的值是$sum")
     sum = first + second
     println("計算後sum的值是$sum")
 }
@@ -99,7 +99,7 @@ fun main(){
 if敘述常常會使用到比較運算子，所以先簡單了解一下if敘述的用法。
  
  運算子 | 意義 
----|--- 
+--- | --- 
  == | 內容相等 
  != | 內容不相等 
  > | 大於 
@@ -251,7 +251,7 @@ fun main(){
  
 
 
-### 數學算式轉換電腦運算
+## 數學算式轉換電腦運算
 ```
 	// Name : ladder.kt
 	//讓使用者輸入梯形的上底、下底及高，程式會計算梯形的面積(上底加下底乘以高除以2)
