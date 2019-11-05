@@ -231,63 +231,88 @@ fun main(){
 #### (當作敘述式)Using when Without Expression
 
 ```kotlin
-fun main(){  
-  
-    var number = 4  
-    when(number) {  
-        1 -> println("One")  
-        2 -> println("Two")  
-        3 -> println("Three")  
-        4 -> println("Four")  
-        5 -> println("Five")  
-        else -> println("invalid number")  
-    }  
-  
+fun main(){
+    //請輸入1~5的數值,並以英文字顯示出來
+    print("請輸入1~5的數值:")
+    var number = readLine()?.toIntOrNull() ?: 0
+    when(number) {
+        1 -> println("您輸入的是:One")
+        2 -> println("您輸入的是:Two")
+        3 -> println("您輸入的是:Three")
+        4 -> println("您輸入的是:Four")
+        5 -> println("您輸入的是:Five")
+        else -> println("輸入的超過1-5了")
+    }
+
 }
 ``` 
+
 #### (多行敘述請使用大括號)Multiple Statement of when Using Braces
 
 ```kotlin
-fun main(){  
-    var number = 1  
-    when(number) {  
-        1 -> {  
-            println("Monday")  
-            println("First day of the week")  
-        }  
-        7 -> println("Sunday")  
-        else -> println("Other days")  
-    }  
-}  
+fun main(){
+    //四則運算
+    //請使用者輸入加、減、乘、除運算子，就會顯示運算結果。
+
+    print("請輸入第1運算元:")
+    val first = readLine()?.toIntOrNull() ?: 0
+    print("請輸入第2運算元(不可為零):")
+    val second = readLine()?.toIntOrNull() ?: 1
+    print("請輸入加、減、乘、除運算子:")
+    when(readLine() ?: ""){
+        "+" -> {
+            val result = first + second
+            println("$first + $second = $result")
+        }
+
+        "-" -> {
+            val result = first - second
+            println("$first - $second = $result")
+        }
+
+        "*" -> {
+            val result = first * second
+            println("$first * $second = $result")
+        }
+
+        "/" -> {
+            val result = first * second
+            println("$first * $second = $result")
+        }
+        else -> println("運算子輸入錯誤")
+    }
+}
 ```
 
 
 #### (群組比對)Multiple branches of when
 ```kotlin
-fun main(){  
-    var number = 8  
-    when(number) {  
-        3, 4, 5, 6 ->  
-            println("It is summer season")  
-        7, 8, 9 ->  
-            println("It is rainy season")  
-        10, 11 ->  
-            println("It is autumn season")  
-        12, 1, 2 ->  
-            println("It is winter season")  
-        else -> println("invalid input")  
-    }  
-} 
+import kotlin.random.Random
+fun main(){
+    //請製作產生1~9的亂數,若1,4,7請顯示「剪刀」;若2,5,8請顯示「石頭」;若3,6,9請顯示「布」
+    print("請輸入go開始執行:")
+    if (readLine() ?: "go" == "go"){
+        val randomValue = Random.nextInt(1,9)
+        println("亂數值為:$randomValue")
+        when(randomValue){
+            1, 4, 7 -> println("剪刀")
+            2, 5, 8 -> println("石頭")
+            3, 6, 9 -> println("布")
+        }
+    }
+}
 ``` 
 
 #### (使用in做範圍比對)Using when in the range
 ```kotlin
-fun main(){  
-    var number = 7  
-    when(number) {  
-        in 1..5 -> println("Input is provided in the range 1 to 5")  
-        in 6..10 -> println("Input is provided in the range 6 to 10")  
-        else -> println("none of the above")  
-    }  
-}  
+fun main(){
+    //請製作輸入1~12整數值當作月份，並且顯示該月份所對應的季節
+    print("請輸入月份:")
+    when(readLine()?.toIntOrNull() ?: 1){
+        in 2..4 -> println("春季")
+        in 5..7 -> println("夏季")
+        in 8..10 -> println("秋季")
+        11, 12, 1 -> println("冬季")
+    }
+}
 ```
