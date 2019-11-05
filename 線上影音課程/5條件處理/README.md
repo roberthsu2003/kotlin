@@ -135,6 +135,8 @@ fun main(){
     print("購買商品總價:")
     var total:Int = readLine()?.toIntOrNull() ?: 0
 
+    /*
+    //對待當作statement
     var discount:Int
     if (total >= 10000)
         discount =  (total * 0.8).toInt()
@@ -146,6 +148,21 @@ fun main(){
         discount = (total * 0.95).toInt()
     else
         discount = 0
+    print("找錢${payMenoy - discount}給客戶");
+    */
+
+    //對待當作expression
+    val discount = if (total >= 10000)
+        (total * 0.8).toInt()
+    else if (total >= 5000)
+        (total * 0.85).toInt()
+    else if (total >= 3000)
+        (total * 0.9).toInt()
+    else if (total >= 1000)
+        (total * 0.95).toInt()
+    else
+        0
+    
     print("找錢${payMenoy - discount}給客戶");
 
 }
