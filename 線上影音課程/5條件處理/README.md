@@ -226,7 +226,7 @@ fun main(args: Array<String>){
 #### Using when Without Expression
 
 ```kotlin
-fun main(args: Array<String>){  
+fun main(){  
   
     var number = 4  
     when(number) {  
@@ -243,7 +243,7 @@ fun main(args: Array<String>){
 #### Multiple Statement of when Using Braces
 
 ```kotlin
-fun main(args: Array<String>){  
+fun main(){  
     var number = 1  
     when(number) {  
         1 -> {  
@@ -259,7 +259,7 @@ fun main(args: Array<String>){
 
 #### Multiple branches of when
 ```kotlin
-fun main(args: Array<String>){  
+fun main(){  
     var number = 8  
     when(number) {  
         3, 4, 5, 6 ->  
@@ -277,7 +277,7 @@ fun main(args: Array<String>){
 
 #### Using when in the range
 ```kotlin
-fun main(args: Array<String>){  
+fun main(){  
     var number = 7  
     when(number) {  
         in 1..5 -> println("Input is provided in the range 1 to 5")  
