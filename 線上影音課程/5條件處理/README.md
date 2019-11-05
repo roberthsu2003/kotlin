@@ -169,35 +169,120 @@ fun main(){
 ```
 	
 #### java對待if當作statement,kotlin對待if當作expression,取代三元運算式
-	println(if(x > 10) "greater" else "smaller")
+```kotlin
+println(if(x > 10) "greater" else "smaller")
+```
 	
 #### 對待當statements
-	val hour = 10
-	val greeting: String
-	if (hour < 18) {
-	      greeting = "Good day"
-	 } else {
-	      greeting = "Good evening"
-	 }
-	 
+```kotlin
+val hour = 10
+val greeting: String
+if (hour < 18) {
+	 greeting = "Good day"
+} else {
+	 greeting = "Good evening"
+}
+```	 
 #### 對待當作expression
+```kotlin
 	val greeting = if (hour < 18) "Good day" else "Good evening"
-
+```
 #### 會自動return最後一行
-	val hour = 10
-	val greeting = if (hour < 18) {
-	     //some code
-	      "Good day"
-	 } else {
-			//some code
-	      "Good evening"
-	 }
-	 println(greeting) // Prints: "Good day"
-
+```kotlin
+val hour = 10
+val greeting = if (hour < 18) {
+	  //some code
+	  "Good day"
+} else {
+		//some code
+	  "Good evening"
+}
+println(greeting) // Prints: "Good day"
+```
 
 #### 也可以應用在字串樣板內
-	val age = 18
-	val message = "You are ${ if (age < 18) "young" else "of age" } person"
-	 println(message) // Prints: You are of age person
-
+```kotlin
+val age = 18
+val message = "You are ${ if (age < 18) "young" else "of age" } person"
+println(message) // Prints: You are of age person
+```
 ### when敘述
+#### Using when as an Expression
+```kotlin
+fun main(args: Array<String>){  
+    var number = 4  
+    var numberProvided = when(number) {  
+        1 -> "One"  
+        2 -> "Two"  
+        3 -> "Three"  
+        4 -> "Four"  
+        5 -> "Five"  
+        else -> "invalid number"  
+    }  
+    println("You provide $numberProvided")  
+}  
+```
+
+#### Using when Without Expression
+
+```kotlin
+fun main(args: Array<String>){  
+  
+    var number = 4  
+    when(number) {  
+        1 -> println("One")  
+        2 -> println("Two")  
+        3 -> println("Three")  
+        4 -> println("Four")  
+        5 -> println("Five")  
+        else -> println("invalid number")  
+    }  
+  
+}
+``` 
+#### Multiple Statement of when Using Braces
+
+```kotlin
+fun main(args: Array<String>){  
+    var number = 1  
+    when(number) {  
+        1 -> {  
+            println("Monday")  
+            println("First day of the week")  
+        }  
+        7 -> println("Sunday")  
+        else -> println("Other days")  
+    }  
+}  
+```
+
+
+#### Multiple branches of when
+```kotlin
+fun main(args: Array<String>){  
+    var number = 8  
+    when(number) {  
+        3, 4, 5, 6 ->  
+            println("It is summer season")  
+        7, 8, 9 ->  
+            println("It is rainy season")  
+        10, 11 ->  
+            println("It is autumn season")  
+        12, 1, 2 ->  
+            println("It is winter season")  
+        else -> println("invalid input")  
+    }  
+} 
+``` 
+
+#### Using when in the range
+```kotlin
+fun main(args: Array<String>){  
+    var number = 7  
+    when(number) {  
+        in 1..5 -> println("Input is provided in the range 1 to 5")  
+        in 6..10 -> println("Input is provided in the range 6 to 10")  
+        else -> println("none of the above")  
+    }  
+}  
+```

@@ -25,7 +25,7 @@
 	 }
 	 println(message) //Prints: Two wheels
 	 
-### 多做比對
+### 群組比對
 	val vehicle = "Car"
 	    when (vehicle) {
 	       "Car", "Bike" -> print("Vehicle")
