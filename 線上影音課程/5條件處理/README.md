@@ -9,7 +9,7 @@
 多項選擇 | if() ... else if() ... else
 
 #### 單項選擇
-```
+```kotlin
 fun main(){
     //密碼輸入判斷
     //讓使用者輸入密碼，如果輸入的密碼是("abcd"), 會顯示「密碼正確，歡迎進入kotlin世界」, 如果密錯誤,不做任何動作
@@ -28,7 +28,7 @@ fun main(){
 #### 雙向選擇
 * 將if當作statement  
 
-```	
+```kotlin	
 fun main(){
     //將if當作statement
     val x = 5
@@ -40,7 +40,7 @@ fun main(){
 
 }
 ```
-```
+```kotlin
 fun main(){
     //會顯示錯誤的進階密碼判斷
     //密碼輸入判斷
@@ -65,7 +65,7 @@ fun main(){
 ```
 * 將if當作expression  
 
-```
+```kotlin
 fun main(){
     //學生成績判斷
     //大於等於60分,顯示及格,反之顯示不及格
@@ -83,8 +83,8 @@ fun main(){
     println("同學,您的分數${if (score >= 60) "及格" else "不及格"}")
 }
 ```
-#### 多項選擇
-```
+#### 多項選擇  
+```kotlin
 fun main(){
     //分數等級
     //分數90以上"A+",80以上"A",70以上"B",60以上"C",60以下"D"等
