@@ -207,23 +207,28 @@ val message = "You are ${ if (age < 18) "young" else "of age" } person"
 println(message) // Prints: You are of age person
 ```
 ### when敘述
-#### Using when as an Expression
+#### (當作運算式)Using when as an Expression
 ```kotlin
-fun main(args: Array<String>){  
-    var number = 4  
-    var numberProvided = when(number) {  
-        1 -> "One"  
-        2 -> "Two"  
-        3 -> "Three"  
-        4 -> "Four"  
-        5 -> "Five"  
-        else -> "invalid number"  
-    }  
-    println("You provide $numberProvided")  
-}  
+fun main(){
+
+    //請輸入1~5的數值,並以英文字顯示出來
+    print("請輸入1~5的數值:")
+    var number = readLine()?.toIntOrNull() ?: 0
+    var numberProvided = when(number) {
+        1 -> "One"
+        2 -> "Two"
+        3 -> "Three"
+        4 -> "Four"
+        5 -> "Five"
+        else -> "超過1-5了"
+    }
+    println("您輸入的是:$numberProvided")
+
+
+}
 ```
 
-#### Using when Without Expression
+#### (當作敘述式)Using when Without Expression
 
 ```kotlin
 fun main(){  
@@ -240,7 +245,7 @@ fun main(){
   
 }
 ``` 
-#### Multiple Statement of when Using Braces
+#### (多行敘述請使用大括號)Multiple Statement of when Using Braces
 
 ```kotlin
 fun main(){  
@@ -257,7 +262,7 @@ fun main(){
 ```
 
 
-#### Multiple branches of when
+#### (群組比對)Multiple branches of when
 ```kotlin
 fun main(){  
     var number = 8  
@@ -275,7 +280,7 @@ fun main(){
 } 
 ``` 
 
-#### Using when in the range
+#### (使用in做範圍比對)Using when in the range
 ```kotlin
 fun main(){  
     var number = 7  
