@@ -152,3 +152,35 @@ fun main(){
 }
 ```
 
+### while迴圈
+```kotlin
+fun main(){
+    //每月存錢買價值50000元的機車,存夠錢後顯示通知
+    var deposit = 0
+    var i = 0
+    while(deposit<50000){
+        i++
+        print("第${i}個月的存款是:");
+        deposit += readLine()?.toIntOrNull() ?: 0
+    }
+    println("總存款為${deposit},足夠購買機車了")
+}
+```
+
+### do-while迴圈
+
+```kotlin
+fun main(){
+    //請設計一個輸入每位學生的成績，當輸入完成後，輸入任一個英文字，結束程式，計算總分
+    var sum = 0
+    do {
+        print("請輸入學生分數:")
+        var score = readLine()?.toIntOrNull()
+        sum += score ?: 0;
+    } while (score != null)
+
+    print("學生總成績是$sum")
+
+}
+```
+
