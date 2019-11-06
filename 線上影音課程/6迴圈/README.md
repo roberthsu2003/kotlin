@@ -184,3 +184,41 @@ fun main(){
 }
 ```
 
+### break
+
+```kotlin
+fun main(){
+
+    //請設計一個輸入每位學生的成績，當輸入完成後，輸入任一個英文字，結束程式，計算總分
+    var sum = 0
+    do {
+        print("請輸入學生分數:")
+        var score = readLine()?.toIntOrNull() ?: break
+        sum += score
+    } while (true)
+
+    print("學生總成績是$sum")
+
+
+}
+```
+
+
+### continue
+
+```kotlin
+fun main(){
+    //只要加總奇數
+    var deposit = 0
+    val lists = mutableListOf<Int>()
+    while(true){
+        print("請輸入奇數加總:")
+        val value = readLine()?.toIntOrNull() ?: break
+        if(value % 2 == 0)
+           continue
+        lists.add(value)
+        deposit += value;
+    }
+    println("奇數有${lists},加總為${deposit}")
+}
+```
