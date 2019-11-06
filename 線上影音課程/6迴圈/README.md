@@ -38,6 +38,18 @@ fun main(){
 }
 ```
 
+### 使用Range的downTo和step
+
+```kotlin
+fun main(){
+    //請輸出身高200,198,196...150公分的標準體重
+    //(身高-100) * 0.9
+    for (height in 200 downTo 150 step 2)
+        println("身高:$height ->標準體重:${(height-100) * 0.9}");
+}
+```
+
+
 ### for 和 if 整合  
 
 ```kotlin
@@ -65,70 +77,6 @@ fun main(){
     }
 }
 ```
-### for與陣列
-
-```kotlin
-fun main(){
-    //請輸入學生5科的成績,計算總合和平均
-    val scores = Array(5){0}
-    var sum = 0
-    for(i in scores.indices){
-        print("請輸入學生第${i}科的分數:")
-        scores[i] = readLine()?.toIntOrNull() ?: 0
-    }
-
-    for(score in scores){
-        sum += score
-    }
-
-    println("學生總分為$sum,平均為${sum/5.0}")
-
-
-}
-```
-
-### 陣列的indices和withIndex()
-
-```kotlin
-fun main(){
-    //請輸入學生5科的成績,計算總合和平均
-    val scores = Array(5){0}
-    var sum = 0
-    for(i in scores.indices){
-        print("請輸入學生第${i}科的分數:")
-        scores[i] = readLine()?.toIntOrNull() ?: 0
-    }
-
-    for(score in scores){
-        sum += score
-    }
-
-    println("學生總分為$sum,平均為${sum/5.0}")
-
-
-}
-```
-
-### 使用Range的downTo和step
-
-```kotlin
-fun main(){
-    //請輸出身高200,198,196...150公分的標準體重
-    //(身高-100) * 0.9
-    for (height in 200 downTo 150 step 2)
-        println("身高:$height ->標準體重:${(height-100) * 0.9}");
-}
-```
-## for in 迴圈 整合 Array
-### in後面加陣列
-```kotlin
-fun main() {  
-    val marks = arrayOf(80,85,60,90,70)  
-    for(item in marks){  
-        println(item)  
-    }  
-} 
-```
 
 ### 使用repeat function
 
@@ -142,4 +90,65 @@ fun main(){
         sum *= 2
     }
     print("2的${n}次方是$sum")
-}```
+}
+```
+
+
+## for in 迴圈 整合 Array
+### forIn和陣列
+```kotlin
+package lesson6
+
+fun main(){
+    //請輸入學生5科的成績,計算總合和平均
+    val scores = Array(5){0}
+    var sum = 0
+    for(i in scores.indices){
+        print("請輸入學生第${i}科的分數:")
+        scores[i] = readLine()?.toIntOrNull() ?: 0
+    }
+
+    for(score in scores){
+        sum += score
+    }
+
+    println("學生總分為$sum,平均為${sum/5.0}")
+
+
+}
+
+```
+### forIn和陣列的indices,withIndex()
+
+```kotlin
+package lesson6
+
+fun main(){
+    //請輸入一星期每天的支出，並顯示每天的支出和總支出
+    var sum = 0
+    val week =  Array(7){0}
+    for (i in week.indices){
+      week[i] = when (i+1){
+           7 -> {
+               print("星期日支出:")
+               readLine()?.toIntOrNull() ?: 0
+           }
+          else -> {
+              print("星期${i+1}支出:")
+              readLine()?.toIntOrNull() ?: 0
+          }
+       }
+    }
+
+    for((index,value) in week.withIndex()){
+        when(index+1){
+            7 -> println("星期日支出是$value")
+            else -> println("星期${index+1}的支出是$value")
+        }
+        sum += value
+    }
+
+    println("一星期的總支出是:$sum")
+}
+```
+
