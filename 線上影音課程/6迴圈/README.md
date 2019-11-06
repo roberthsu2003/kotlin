@@ -38,7 +38,7 @@ fun main(){
 }
 ```
 
-### 使用Range的downTo和step
+### 使用Range的downTo 和 step
 
 ```kotlin
 fun main(){
