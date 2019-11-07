@@ -10,19 +10,17 @@
 
 #### 單項選擇
 ```kotlin
-fun main(){
-    //密碼輸入判斷
-    //讓使用者輸入密碼，如果輸入的密碼是("abcd"), 會顯示「密碼正確，歡迎進入kotlin世界」, 如果密錯誤,不做任何動作
-    print("請輸入密碼:")
-    val pwd = readLine() ?: ""
-    if (pwd == "abcd") {
-        println("密碼正確，歡迎進入kotlin世界")
-    }
-    /*可以改寫為
-    if (pwd == "abcd")
-        println("密碼正確，歡迎進入kotlin世界")
-    */
+//密碼輸入判斷
+//讓使用者輸入密碼，如果輸入的密碼是("kotlin"), 會顯示「密碼正確，歡迎進入kotlin世界」, 如果密錯誤,不做任何動作
+ print("請輸入密碼:")
+val pwd = readLine() ?: ""
+if (pwd == "kotlin") {
+   println("密碼正確，歡迎進入kotlin世界")
 }
+/*可以改寫為
+if (pwd == "kotlin")
+    println("密碼正確，歡迎進入kotlin世界")
+*/
 ```
 
 #### 雙向選擇
