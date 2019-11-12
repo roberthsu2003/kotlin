@@ -5,6 +5,32 @@ fun main() {
 	 println("Hello,World");
 }
 ```
+
+### 呼叫function
+```kotlin
+val a = double(5);
+```
+
+
+```kotlin
+fun main(){
+    //範例
+    //輸入姓名，上下行要印出20個「-」符號
+    print("請輸入您的姓名:")
+    val name = readLine() ?: ""
+    printStart()
+    println("您的姓名是:$name")
+    printStart()
+}
+
+fun printStart(){
+    for (index in 1..20){
+        print("-")
+    }
+    println();
+}
+
+```
 ### 可以傳出值的function
 ``` kotlin
 fun double(i:Int):Int
@@ -12,9 +38,24 @@ fun double(i:Int):Int
 	return 2 * i
 }
 ```
-### 呼叫function
 ```kotlin
-val a = double(5);
+fun main(){
+    //範例
+    //輸入姓名，上下行要印出20個「-」符號
+    print("請輸入您的姓名:")
+    val name = readLine() ?: ""
+    println(outPutStart())
+    println("您的姓名是:$name")
+    println(outPutStart())
+}
+
+fun outPutStart():String{
+    var symbol = ""
+    for (index in 1..20){
+        symbol += "-"
+    }
+    return symbol
+}
 ```
 
 ## 參數
