@@ -6,12 +6,6 @@ fun main() {
 }
 ```
 
-### 呼叫function
-```kotlin
-val a = double(5);
-```
-
-
 ```kotlin
 fun main(){
     //範例
@@ -33,11 +27,18 @@ fun printStart(){
 ```
 ### 可以傳出值的function
 ``` kotlin
-fun double(i:Int):Int
+fun double():Int
 {
-	return 2 * i
+	return 2 * 2
 }
 ```
+
+### 呼叫function
+
+```kotlin
+val a = double(5);
+```
+
 ```kotlin
 fun main(){
     //範例
