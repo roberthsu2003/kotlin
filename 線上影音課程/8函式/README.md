@@ -218,5 +218,89 @@ fun printAll(vararg texts:Any){
 	
 ```
 
+## 單行運算式的function(single-expression Funciton)
+### 傳統單行運算式function
+
+```kotlin
+fun square(x:Int):Int{
+	 //這是單行運算式function
+	 return x * x
+} 
+	
+//andorid 內容
+fun getEmail():String{
+   return emailView.text.toStirng()
+}
+```
+
+### 單行運算式有使用區塊符號
+
+```kotlin
+fun square(x:Int):Int{
+	    //這是單行運算式function
+	 return x * x
+} 
+```	
+		
+### 單行運算式可以省略區塊符號和return, 也可以省略定義傳回值，因為kotlin會自我推測
+
+```kotlin
+fun square(x:Int) = x * x
+
+fun hello() : String = "hello world"
+
+fun hello(name: String, location: String): String = "hello to you  $name at $location"
+
+fun concat1(a: String, b: String) = a + b
+```	
+
+
+### 在andoird內的應用
+```kotlin
+class AddressAdapter : ItemAdapter<AddressAdapter.ViewHolder>() {
+	   override fun getLayoutId() = R.layout.choose_address_view
+	   override fun onCreateViewHolder(itemView: View) = ViewHolder(itemView)
+	        // Rest of methods
+ }
+```
+### 單行運算式搭配when判斷式
+
+```kotlin
+fun valueFromBooking(key: String, booking: Booking?) = when(key) {
+	        "patient.nin" -> booking?.patient?.nin
+	        "patient.email" -> booking?.patient?.email
+	        "patient.phone" -> booking?.patient?.phone
+	        "comment" -> booking?.comment
+				else -> null 
+	}
+```
+
+### 單行運算式搭配多重串接運算
+
+```kotlin
+fun textFormatted(text: String, name: String) = text
+	                          .trim()
+	                          .capitalize()
+	                          .replace("{name}", name)
+val formatted = textFormatted("hello, {name}", "Marcin")
+println(formatted) // Hello, Marcin
+
+```
+### 和android 的activity onOptionsItemSelected method 整合
+
+```kotlin
+override fun onOptionsItemSelected(item: MenuItem): Boolean = when
+{
+	        item.itemId == android.R.id.home -> {
+	            onBackPressed()
+					 true 
+				}
+	        else -> super.onOptionsItemSelected(item)
+}
+```
+
+
+
+
 
 
