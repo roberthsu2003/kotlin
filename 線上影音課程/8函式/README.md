@@ -71,7 +71,7 @@ fun findDuplicates(list:List<Int>):Set<Int>{
 }
 ```
 
-### 參數名稱和引數名稱
+### 參數名稱和引數
 
 * 引數名稱一個真實的值，傳遞給function。
 * 參數名稱是一個變數名稱，使用在定義function時  
@@ -118,6 +118,22 @@ presentGently("Str")
 // Prints: Hello. I would like to present you: Str
 ```
 
+```kotlin
+
+
+fun main(){
+    //列印出2數相加
+    print("請輸入第一個值:")
+    val f = readLine()?.toIntOrNull() ?: 0
+    print("請輸入第二個值:")
+    val s = readLine()?.toIntOrNull() ?: 0
+    printAdd(f,s)
+}
+
+fun printAdd(first:Int, second:Int){
+    print("$first + $second = ${first + second}")
+}
+```
 
 # 傳回值
 *  所有function都有傳回值  
