@@ -299,8 +299,207 @@ override fun onOptionsItemSelected(item: MenuItem): Boolean = when
 }
 ```
 
+# 尾部遞迴function
+* 自已呼叫自已  
 
+### 傳統遞迴--太多會throw statkOverflowError  
+```kotlin
+fun getState(state: State, n: Int): State =
+      if (n <= 0) state 
+      else 
+      getState(nextState(state), n - 1)
+ 	
+ 	//other
+fun fact(k: Int): Int {
+    if (k == 0) return 1
+    else 
+    return k * fact(k - 1)
+}
+```	
+	
+   
+   
+   
 
+### 傳統解決方案--不好了解  
+```kotlin
+fun getState(state: State, n: Int): State {
+	    var state = state
+	    for (i in 1..n) {
+	      state = state.nextState()
+		}
+	  return state
+ }
+```
+### 最佳解決方案 尾部遞迴
+```kotlin
+tailrec fun getState(state:State, n:Int):State =if (n <=0 ){ 
+	state
+	}else{
+	getState(state.nextState(), n-1)
+}
+```
 
+### 尾部遞迴相似java程式碼
+
+```kotlin
+public static final State getState(@NotNull State state, int n)
+	  {
+	     while(true) {
+	         if(n <= 0) {
+	            return state;
+	         }
+	         state = state.nextState();
+				 n = n - 1; 
+		}
+}
+```
+
+## 引數預設值
+
+```kotlin
+fun main() {
+	 printValue("robert",true,"","")
+	 printValue("jenny")
+	 printValue("alice",false)
+}
+	
+fun printValue(value:String,inBracket:Boolean=true,prefix:String="",suffix:String=""){
+	  print(prefix)
+	  if(inBracket){
+	      print("${value}")
+	   }else{
+	      print(value)
+	   }
+	   println(suffix)
+}
+```
+
+## 引數標籤名稱語法
+
+```kotlin
+fun main() {
+	 printValue("robert",true,"","!")
+	 printValue("jenny",suffix = "!",prefix="--")
+}
+	
+fun printValue(value:String,inBracket:Boolean=true,prefix:String="",suffix:String=""){
+	print(prefix)
+	if(inBracket){
+	    print("${value}")
+	}else{
+	    print(value)
+	}
+	println(suffix)
+}
+```
+### 可讀性更高
+
+```kotlin
+fun main() {
+	printValue("str", inBracket=true)
+	printValue("str", prefix = "Value is")
+	printValue("str",prefix = "Value is", suffix = "!!")    
+}
+
+```	
+### 使用引數標籤，可以不依照順序
+
+```kotlin
+fun main() {
+	printValue("str", inBracket=true, prefix = "value is")
+	printValue("str", prefix = "Value is", inBracket=true)  
+}
+```	
+### 前面使用引數位置，後面使用引數標籤(不可以顛倒)
+```
+fun main() {
+	 printValue("str",true,"")
+	 printValue("str", true, prefix = " ")
+	 printValue("str", inBracket = true, prefix = "")
+	 printValue("str",inBracket=true, "") //錯誤
+}
+```
+* 呼叫java function不可以使用引數名稱
+
+## 頂層函式
+
+### 放在kt檔內，不在class內 
+
+```kotlin
+// Test.kt
+package com.example
+fun printTwo() {
+	    print(2)
+}
+```
+
+### 必需明確的import
+
+```kotlin
+// Test.kt
+package com.example
+fun printTwo() {
+	print(2)
+}
+// Main.kt
+import com.example.printTwo
+fun main(args: Array<String>) {
+	 printTwo()
+}
+```
+
+## 頂層函式在java內的使用
+
+### android runtime virtual Machine只能執行在 class內的code
+
+```kotlin
+// Printer.kt
+	   fun printTwo() {
+	       print(2) 
+}
+
+//Java
+public final class PrinterKt { // 1
+	 public static void printTwo() { // 2
+	   System.out.print(2); // 3
+	 }
+}
+	
+//Java file, call inside some method
+    PrinterKt.printTwo()
+```
+ 
+### 在java內更方便使用kotlin的頂層函數
+```kotlin
+在kotlin最上層，import上方
+//kotlin
+@file:JvmName("Printer")
+	
+	
+//Java
+Printer.printTwo()
+```  	
+### 在不同kt檔案內的頂層函式，可讓轉成相同java class內的靜態方法
+
+```kotlin
+// Max.kt
+	 @file:JvmName("Math")
+	 @file:JvmMultifileClass
+	 package com.example.math
+	 fun max(n1: Int, n2: Int): Int = if(n1 > n2) n1 else n2
+	        
+// Min.kt
+	 @file:JvmName("Math")
+	 @file:JvmMultifileClass
+	 package com.example.math
+	 fun min(n1: Int, n2: Int): Int = if(n1 < n2) n1 else n2
+	 
+// java
+	Math.min(1, 2)
+	Math.max(1, 2)	
+```	 
+
+  
 
 
