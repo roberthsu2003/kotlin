@@ -6,14 +6,14 @@ fun main() {
 }
 ```
 ### 可以傳出值的function
-```
+``` kotlin
 fun double(i:Int):Int
 {
 	return 2 * i
 }
 ```
 ### 呼叫function
-```
+```kotlin
 val a = double(5);
 ```
 
@@ -309,7 +309,7 @@ fun getState(state: State, n: Int): State =
       else 
       getState(nextState(state), n - 1)
  	
- 	//other
+//other
 fun fact(k: Int): Int {
     if (k == 0) return 1
     else 
@@ -412,7 +412,8 @@ fun main() {
 }
 ```	
 ### 前面使用引數位置，後面使用引數標籤(不可以顛倒)
-```
+
+```kotlin
 fun main() {
 	 printValue("str",true,"")
 	 printValue("str", true, prefix = " ")
@@ -455,8 +456,8 @@ fun main(args: Array<String>) {
 
 ```kotlin
 // Printer.kt
-	   fun printTwo() {
-	       print(2) 
+fun printTwo() {
+	 print(2) 
 }
 
 //Java
