@@ -4,7 +4,7 @@
 語法:Array(size: Int, init: (Int) -> T) 
 ```
 
-#### kotlin陣列可以使用下面方法建立:  
+#### kotlin 陣列可以使用下面方法建立:  
 * arrayOf()  
 * intArrayOf()  
 * charArrayOf()  
