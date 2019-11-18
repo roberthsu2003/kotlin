@@ -25,6 +25,7 @@ fun printStart(){
 }
 
 ```
+
 ### 可以傳出值的function
 ``` kotlin
 fun double():Int
@@ -135,6 +136,27 @@ fun printAdd(first:Int, second:Int){
 }
 ```
 
+```kotlin
+fun main(){
+    print("請輸入數個整數值,用「,」號分開,例如 4, 5, 6:")
+    val inputValues = readLine().toString()
+    val stringArray = inputValues.split(",").toTypedArray()
+    var intArray = stringArray.map { it.toInt() }.toIntArray()
+    val sum = printSum(*intArray)
+    println("加總是${sum}");
+
+}
+
+fun printSum(vararg numbers:Int):Int{
+    for ((index,value) in numbers.withIndex()){
+        println("您輸入的第${index + 1},值是:${value}")
+    }
+    val sum = numbers.sum()
+    return sum
+}
+```
+
+
 # 傳回值
 *  所有function都有傳回值  
 *  沒有傳回值，可以省略，也可以明確傳回Unit類型 
@@ -233,6 +255,47 @@ fun printAll(vararg texts:String){
 	 val allTexts = texts.joinToString(",")
 	 println("Texts are $allTexts");
 }
+
+```
+
+```kotlin
+
+
+fun main(){
+
+    outer@do {
+        print("1攝氏轉華氏 \n2華氏轉攝氏\n其它鍵退出請\n輸入:")
+        when(readLine()?.toIntOrNull() ?: 0){
+            1 -> {
+                print("請輸入攝氏溫度:");
+                val inputValue = readLine()?.toDoubleOrNull() ?: 0.0
+                val outputValue = temperatureCelsius(celsius = inputValue)
+                println("攝氏:${inputValue}=華氏:${"%.2f".format(outputValue)}");
+            }
+            2 -> {
+                print("請輸入華氏溫度:");
+                val inputValue = readLine()?.toDoubleOrNull() ?: 0.0
+                val outputValue = temperatureFahrenheit(fahrenheit = inputValue)
+                println("華氏:${inputValue}=攝氏:${"%.2f".format(outputValue)}");
+            }
+            else -> {
+                print("結束");
+                break@outer
+            }
+
+        }
+        println("=================")
+    }while (true)
+
+}
+
+fun temperatureCelsius(celsius:Double):Double{
+    return  celsius * 1.8 + 32
+}
+fun temperatureFahrenheit(fahrenheit:Double):Double{
+    return  (fahrenheit - 32) / 1.8
+}
+
 ```	
 
 ### 可以在vararg前或後加入更多參數
