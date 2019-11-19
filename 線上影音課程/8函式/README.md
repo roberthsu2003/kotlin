@@ -785,6 +785,40 @@ fun main(){
 }
 ``` 
 
+### local Function
+```kotlin
+package lesson8
+
+fun main(){
+    //區域函式
+    //巢狀function
+    //計算出2數的最大公因(約)數
+
+    println("請輸入2個數值求出最大公約數")
+    print("請輸入第一個數值:")
+    val firstValue = readLine()?.toIntOrNull() ?: 1
+    print("請輸入第二個數值:")
+    val secondValue = readLine()?.toIntOrNull() ?: 1
+
+    fun highestFactor(first:Int,second:Int):Int{
+        val minValue = if(first < second) first else second
+        for (divisor in minValue downTo 1){
+            if(first%divisor == 0 && second%divisor == 0){
+                return divisor
+                break;
+            }
+        }
+        return 0
+    }
+    val highest = highestFactor(firstValue,secondValue)
+    if (highest == 0) {
+        println("${firstValue}和${secondValue}沒有最大公因數")
+    }else{
+        println("${firstValue}和${secondValue}的最大公因數=$highest")
+    }
+}
+```
+
   
 
 
