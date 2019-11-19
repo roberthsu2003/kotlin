@@ -573,7 +573,32 @@ fun printValue(value:String,inBracket:Boolean=true,prefix:String="",suffix:Strin
 }
 ```
 
-## 引數標籤名稱語法
+```kotlin
+package lesson8
+
+fun main(){
+    //預設的引數名稱
+    //輸入姓名,輸出歡迎字串
+    print("請輸入姓名:")
+    val name = readLine() ?: "沒有姓名"
+    //多種呼叫方法
+    var greetingName = greeting(name)
+    println(greetingName)
+    greetingName = greeting(name,true)
+    println(greetingName)
+    greetingName = greeting(name,true,"歡迎")
+    println(greetingName)
+    greetingName = greeting(name,true,"歡迎","光臨")
+    println(greetingName)
+}
+fun greeting(name:String,inBracket:Boolean = false, prefix:String = "", suffix:String = ""):String{
+    var greet = name
+    greet = if (inBracket) "($greet)" else greet
+    return "$prefix $greet $suffix"
+}
+```
+
+### 引數標籤名稱語法
 
 ```kotlin
 fun main() {
@@ -617,6 +642,30 @@ fun main() {
 	 printValue("str", true, prefix = " ")
 	 printValue("str", inBracket = true, prefix = "")
 	 printValue("str",inBracket=true, "") //錯誤
+}
+```
+```kotlin
+fun main(){
+    //使用引數名稱
+    //四則運算
+    //使用引數名稱，可以不依照引數位置呼叫
+    arithmethic("+",5,10);
+    arithmethic("-",secondValue = 5,firstValue = 1)
+    arithmethic(firstValue = 10,operator = "/",secondValue = 2)
+    arithmethic(secondValue = 3,firstValue = 4,operator = "*")
+}
+
+fun arithmethic(operator:String,firstValue:Int,secondValue:Int) = when(operator){
+    "+" ->
+        println("$firstValue + $secondValue = ${firstValue + secondValue}")
+    "-" ->
+        println("$firstValue - $secondValue = ${firstValue - secondValue}")
+    "*" ->
+        println("$firstValue * $secondValue = ${firstValue * secondValue}")
+    "/" ->
+        println("$firstValue * $secondValue = ${firstValue / secondValue}")
+    else ->
+        println("$firstValue + $secondValue = ${firstValue + secondValue}")
 }
 ```
 * 呼叫java function不可以使用引數名稱
@@ -697,7 +746,44 @@ Printer.printTwo()
 // java
 	Math.min(1, 2)
 	Math.max(1, 2)	
-```	 
+```	
+
+```kotlin
+package lesson8_1
+import kotlin.math.pow
+
+//建立topLevelFunction
+//公式
+//1每年計息一次的公式:
+//本利和 = 本金 * (1+年利率)的年數次方
+//2年月計息一次的公式:
+//本利和 = 本金 * (1+年利率/12)的年數次方 * 12
+fun yearTotal(money:Int,year:Int,rate:Double) = money * (1+rate/100).pow(year)
+
+fun monthTotal(money:Int,year: Int,rate:Double) = money * (1+rate/100/12).pow(year*12)
+
+
+
+//=================================================================
+
+package lesson8
+
+import lesson8_1.*
+fun main(){
+    //頂層function
+    //計算定存本利和的複利率函式。程式執行時會要求您輸入定存本金金額，幾年後領回，最後再算出n年後領回多少總金額
+    //計算方式採每年計息一次及每月計息一次
+    print("1.請輸入本金:")
+    val money = readLine()?.toIntOrNull() ?: 0
+    print("2.請輸入年利率(%):")
+    val rate = readLine()?.toDoubleOrNull() ?: 0.0
+    print("3.幾年後領回:")
+    val year = readLine()?.toIntOrNull() ?: 0
+
+    println("每年計息一次-->${year}年後領回本利和:${(yearTotal(money, year, rate)).toInt()}")
+    println("每月計息一次-->${year}年後領回本利和:${monthTotal(money, year, rate).toInt()}")
+}
+``` 
 
   
 
