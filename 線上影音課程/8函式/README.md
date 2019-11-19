@@ -227,35 +227,6 @@ if(a > 0 && b > 0){
 return 0;
 }
 	
-```	
-
-# 參數vararg
-### 有vararg代表充許function接收任何數量的參數
-
-```kotlin
-fun main() {
-	 printSum(1,2,3,4,5)
-	 printSum();	    
-}
-	
-fun printSum(vararg numbers:Int){
-	 val sum = numbers.sum()
-	 println(sum);
-}  
-```
-### vararg傳入的參數是Array<T>
-
-```kotlin
-fun main() {
-	 printAll("A", "B", "C");	    
-}
-	
-fun printAll(vararg texts:String){
-	 //推測這texts的資料類型是Array<String>
-	 val allTexts = texts.joinToString(",")
-	 println("Texts are $allTexts");
-}
-
 ```
 
 ```kotlin
@@ -297,6 +268,37 @@ fun temperatureFahrenheit(fahrenheit:Double):Double{
 }
 
 ```	
+	
+
+# 參數vararg
+### 有vararg代表充許function接收任何數量的參數
+
+```kotlin
+fun main() {
+	 printSum(1,2,3,4,5)
+	 printSum();	    
+}
+	
+fun printSum(vararg numbers:Int){
+	 val sum = numbers.sum()
+	 println(sum);
+}  
+```
+### vararg傳入的參數是Array<T>
+
+```kotlin
+fun main() {
+	 printAll("A", "B", "C");	    
+}
+	
+fun printAll(vararg texts:String){
+	 //推測這texts的資料類型是Array<String>
+	 val allTexts = texts.joinToString(",")
+	 println("Texts are $allTexts");
+}
+
+```
+
 
 ### 可以在vararg前或後加入更多參數
 ```kotlin
@@ -384,6 +386,43 @@ class AddressAdapter : ItemAdapter<AddressAdapter.ViewHolder>() {
 	        // Rest of methods
  }
 ```
+
+```kotlin
+
+fun main(){
+    //求平方值和立方值
+    //建立單一運算式函式
+    
+    println("求平方值和立方值");
+    do {
+        print("1.平方值\n2.立方值\n請輸入1或2,或其它鍵離開:")
+        val inputValue = readLine()?.toIntOrNull() ?: 0
+
+        when(inputValue){
+            1 -> {
+                print("請輸入整數:")
+                val inputValue = readLine()?.toIntOrNull() ?: 0
+                println("平方值是:${square(inputValue)}")
+            }
+
+            2 -> {
+                print("請輸入浮點數:")
+                val inputValue = readLine()?.toDoubleOrNull() ?: 0.0
+                println("立方值是:${cubic(inputValue)}")
+            }
+
+        }
+        println("================================")
+    }while(inputValue == 1 || inputValue == 2)
+    println("結束程式");
+
+}
+
+fun square(x:Int) = x * x
+
+fun cubic(x:Double) = x * x * x
+
+```
 ### 單行運算式搭配when判斷式
 
 ```kotlin
@@ -394,6 +433,31 @@ fun valueFromBooking(key: String, booking: Booking?) = when(key) {
 	        "comment" -> booking?.comment
 				else -> null 
 	}
+```
+
+```kotlin
+package lesson8
+
+fun main(){
+    //使用單一運算式函式搭配when運算式
+    //BMI計算式
+    print("請輸入體重(公斤):")
+    val weight = readLine()?.toDoubleOrNull() ?: 0.0
+    print("請輸入身高(公分):")
+    val height = readLine()?.toDoubleOrNull() ?: 0.0
+    val bmiValue = bmiCalculate(height,weight)
+    val message = bmiMessage(bmiValue)
+    println("您的BMI值為:${"%.2f".format(bmiValue)}-->${message}")
+}
+fun bmiCalculate(height:Double,weight:Double) = weight / ((height/100)*(height/100))
+fun bmiMessage(bmi:Double) = when{
+    bmi < 18.5 -> "體重過輕"
+    bmi >= 18.5 && bmi < 24 -> "標準"
+    bmi >= 24 && bmi < 27 -> "過重"
+    bmi >= 27 && bmi < 30 -> "輕度肥胖"
+    bmi >= 30 && bmi < 35 -> "重度肥胖"
+    else -> "重度肥胖"
+}
 ```
 
 ### 單行運算式搭配多重串接運算
@@ -437,7 +501,6 @@ fun fact(k: Int): Int {
     return k * fact(k - 1)
 }
 ```	
-	
    
    
    
@@ -460,6 +523,20 @@ tailrec fun getState(state:State, n:Int):State =if (n <=0 ){
 	getState(state.nextState(), n-1)
 }
 ```
+```kotlin
+package lesson8
+
+fun main(){
+    //尾部遞迴函式
+    //計算輸入的階層5!
+    //5*4*3*2*1
+    print("自鍵盤輸入一個數字n,利用遞迴來計算n階層(n!):")
+    val n = readLine()?.toDoubleOrNull() ?: 0.0
+    println("$n!=${factorial(n)}")
+}
+
+tailrec fun factorial(n:Double):Double = if (n == 0.0) 1.0 else n * factorial(n - 1.0)
+```	
 
 ### 尾部遞迴相似java程式碼
 
