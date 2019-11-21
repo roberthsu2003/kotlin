@@ -79,7 +79,7 @@ fun main() {
 ```
 	
 ### kotlin使用主要建構式
-* 主要建構式相對於次要建構式，是不可以有程式區塊，所以需要有init程式區塊
+* 主要建構式相對於次要建構式，是不可以有程式區塊，所以需要有init程式區* 
 
 ```kotlin
 class Person constructor(name:String, age:Int){
@@ -99,18 +99,22 @@ fun main() {
 }
 ```
 ### kotlin使用更簡潔的主要建構式
->移除init區塊，將參數直接給property
+* 移除init區塊
+* 將init的程式區塊移至constructor後
+* 將參數直接給property
 
-	class Person constructor(name:String, age:Int){
-	            var name = name
-				var age = age
-	}
-	
-	fun main() {
-	    val person = Person("robert",28);
-	    println("person 姓名:${person.name}");
-	    println("person 年齡:${person.name}");
-	}
+```kotlin
+class Person constructor(name:String, age:Int){
+	var name = name
+	var age = age
+}
+
+fun main() {
+	val person = Person("robert",28);
+	println("person 姓名:${person.name}");
+	println("person 年齡:${person.name}");
+}
+```
 
 ### kotlin使用再簡潔的主要建構式
 > 如果property沒有自訂的getter和setter可以將使用在主要建構式上使用var,val,同時建立property，並且將參數值給property
