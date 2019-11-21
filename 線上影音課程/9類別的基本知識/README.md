@@ -22,7 +22,7 @@ fun main() {
 # 類別屬性
 ### java的類別定義
 
-```kotlin
+```java
 public class Person {
 	private int age;
 	private String name;
@@ -117,24 +117,32 @@ fun main() {
 ```
 
 ### kotlin使用再簡潔的主要建構式
-> 如果property沒有自訂的getter和setter可以將使用在主要建構式上使用var,val,同時建立property，並且將參數值給property
+* 如果property沒有自訂的getter和setter可以在主要建構式上使用var,val
+* 將會建立property，並且將參數值給property
+* 可以省略主要建構式的程式區塊
 
-	class Person constructor(var name:String,var age:Int)
-	
-	fun main() {
-	    val person = Person("robert",28);
-	    println("person 姓名:${person.name}");
-	    println("person 年齡:${person.name}")
-	}
+```kotlin
+class Person constructor(var name:String,var age:Int)
 
-### kotlin使用再簡潔的主要建構式(不使用public,private)
-	class Person(var name:String,var age:Int)
-	
-	fun main() {
-	    val person = Person("robert",28);
-	    println("person 姓名:${person.name}");
-	    println("person 年齡:${person.name}");
-	}
+fun main() {
+	val person = Person("robert",28);
+	println("person 姓名:${person.name}")
+	println("person 年齡:${person.name}")
+}
+```
+
+### kotlin省略主要建構式的constructor
+* 如果沒有任何註釋(annotation)->@Inject
+* 沒有任何修飾字(modifier)->public,private
+```kotlin
+class Person(var name:String,var age:Int)
+
+fun main() {
+	val person = Person("robert",28);
+	println("person 姓名:${person.name}");
+	println("person 年齡:${person.name}");
+}
+```
 
 ### kotlin使用再簡潔的主要建構式(不使用public,private)(增加可讀性)
 	class Person(
