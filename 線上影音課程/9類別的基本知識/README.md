@@ -167,24 +167,26 @@ fun main() {
 ### 使用var 和 val
 * **var** name屬性是可讀寫
 * **val** age屬性是只能讀
+
 ```kotlin
 fun main() {
-class Person(
-	    var name: String,	   
-	    val age: Int      
+	class Person(
+		var name: String,	   
+		val age: Int      
 	)
-	//usage
+	
 	val person = Person("Eva", 25)
 	val name = person.name
 	person.name = "Kate"
 	val age = person.age
-	person.age = 28 //error: read-only property
+	person.age = 28 //錯誤,只可以讀
 	}
 ```
 
-### 
-	class Car (var speed: Double)
-	
+### 使用var 和 val
+```kotlin
+fun main(){
+	class Car (var speed: Double)	
 	val car: Car = Car(7.4) 
 	car.speed = 9.2
 	val speed = car.speed
@@ -197,3 +199,72 @@ class Person(
 	car.speed--
 	car.speed--
 	println(car.speed) //prints: 6.0
+}
+```
+
+### kotlin環境呼叫java
+```java
+//Java class declaration
+public class Fish {
+	private int size;
+	private boolean hungry;
+	public Fish(int size, boolean isHungry) {
+		this.size = size;
+		this.hungry = isHungry;
+	}
+	public int getSize() {
+		return size;
+	}
+	public void setSize(int size) {
+		this.size = size;
+	}
+	public boolean isHungry() {
+		return hungry;
+	}
+	public void setHungry(boolean hungry) {
+		this.hungry = hungry;
+	} 
+}
+```
+```kotlin
+//Kotlin class usage
+fun main(){
+	val fish = Fish(12, true)
+	fish.size = 7
+	println(fish.size) // Prints: 7
+	fish.isHungry = true
+	println(fish.isHungry) // Prints: true
+}
+```
+### kotlin 環境呼叫java
+	//Kotlin class declaration
+		class Fish(var size: Int, var hungry: Boolean)
+		
+	//class usage in Java
+		Fish fish = new Fish(12, true);
+		fish.setSize(7);
+		System.out.println(fish.getSize());
+		fish.setHungry(false);
+		System.out.println(fish.getHungry());
+
+### kotlin 呼叫 android java api
+Java method access syntax                                  | Kotlin property access syntax           |
+-----------------------------------------------------------|-----------------------------------------|
+activity.getFragmentManager()                              | activity.fragmentManager                |
+view.setVisibility(Visibility.GONE)                        | view.visibility = Visibility.GONE       |
+context.getResources().getDisplayMetrics().density         | activity.fragmentManager                |
+
+### 有一些android java api使用is來操作
+
+	class MainActivity : AppCompatActivity() {
+	            override fun onDestroy() { // 1
+	                super.onDestroy()
+	                isFinishing() // method access syntax
+	                isFinishing // property access syntax
+	                finishing // error
+	} }
+	
+	
+### kotlin沒有支援write only(setter)
+	fragment.setHasOptionsMenu(true)
+	fragment.hasOptionsMenu = true // Error!
