@@ -24,25 +24,25 @@ fun main() {
 
 ```kotlin
 public class Person {
-	        private int age;
-	        private String name;
-	        public Person(String name, int age) {
-	            this.name = name;
-	            this.age = age;
-	            System.out.println("Person instance created");
-	        }
-	        public int getAge() {
-	            return age;
-	        }
-	        public void setAge(int age) {
-	            this.age = age;
-	        }
-	        public String getName() {
-	            return name;
-	        }
-	        public void setName(String name) {
-	            this.name = name;
-	        } 
+			private int age;
+			private String name;
+			public Person(String name, int age) {
+			this.name = name;
+			this.age = age;
+			System.out.println("Person instance created");
+		}
+		public int getAge() {
+			return age;
+		}
+		public void setAge(int age) {
+			this.age = age;
+		}
+		public String getName() {
+			return name;
+		}
+		public void setName(String name) {
+			this.name = name;
+		} 
 	
 }
 
@@ -57,15 +57,17 @@ class Playground {
 	
 ### kotlin的類別定義
 * 類別使用次要建構構式
+* constructor是class的次要建構式(secondary constructor)
+* getter和setter由kotlin自動建立的
 
 ```kotlin
 class Person {
-	 var name: String
-	 var age: Int			    
-	 constructor(name: String, age: Int) {
-		 this.name = name
-		 this.age = age
-	   print("person的實體被建立")
+	var name: String
+	var age: Int			    
+	constructor(name: String, age: Int) {
+		this.name = name
+		this.age = age
+		print("person的實體被建立")
 	} 
 }
 
@@ -77,7 +79,7 @@ fun main() {
 ```
 	
 ### kotlin使用主要建構式
-> 主要建構式相對於次要建構式，是不可以有程式區塊，所以需要有init程式區塊
+* 主要建構式相對於次要建構式，是不可以有程式區塊，所以需要有init程式區塊
 
 	class Person constructor(name:String, age:Int){
 	            var name: String
