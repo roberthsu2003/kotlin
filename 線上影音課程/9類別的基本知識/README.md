@@ -1,7 +1,7 @@
 # 類別的基本知識
-### java的類別定義
+## java的類別定義
 
-```kotlin
+```java
 class Person{
 	
 }
@@ -11,15 +11,17 @@ class Playground {
 	   Person person = new Person();
 	}
 }
-
-### kotlin的類別定義
+```
+## kotlin的類別定義
+```kotlin
 class Person;
 
 fun main() {
 	val person = Person();
 }
 ```
-# 類別屬性
+
+## 類別屬性
 ### java的類別定義
 
 ```java
@@ -79,7 +81,7 @@ fun main() {
 ```
 	
 ### kotlin使用主要建構式
-* 主要建構式相對於次要建構式，是不可以有程式區塊，所以需要有init程式區* 
+* 主要建構式相對於次要建構式，是不可以有程式區塊，所以需要有init程式區 
 
 ```kotlin
 class Person constructor(name:String, age:Int){
@@ -134,24 +136,60 @@ fun main() {
 ### kotlin省略主要建構式的constructor
 * 如果沒有任何註釋(annotation)->@Inject
 * 沒有任何修飾字(modifier)->public,private
+
 ```kotlin
 class Person(var name:String,var age:Int)
 
 fun main() {
 	val person = Person("robert",28);
-	println("person 姓名:${person.name}");
-	println("person 年齡:${person.name}");
+	println("person 姓名:${person.name}")
+	println("person 年齡:${person.name}")
 }
 ```
 
-### kotlin使用再簡潔的主要建構式(不使用public,private)(增加可讀性)
-	class Person(
-	    var name:String,
-	    var age:Int
-	    )
-	
+### kotlin(增加可讀性)
+* 將主要建構式的參數換行
+```kotlin
+class Person(
+	var name:String,
+	var age:Int
+)
+
+fun main() {
+	val person = Person("robert",28);
+	println("person 姓名:${person.name}")
+	println("person 年齡:${person.name}")
+}
+```
+
+## 可讀寫屬性vs唯讀屬性
+### 使用var 和 val
 	fun main() {
-	    val person = Person("robert",28);
-	    println("person 姓名:${person.name}");
-	    println("person 年齡:${person.name}");
+	    class Person(
+	            var name: String,
+	            // Read-write property (generated getter and setter)
+	            val age: Int      // Read-only property (generated getter)
+	        )
+	        //usage
+	        val person = Person("Eva", 25)
+	        val name = person.name
+	        person.name = "Kate"
+	        val age = person.age
+	        person.age = 28 //error: read-only property
 	}
+
+### 
+	class Car (var speed: Double)
+	
+	val car: Car = Car(7.4) 
+	car.speed = 9.2
+	val speed = car.speed
+	
+	val car = Car(7.0)
+	println(car.speed) //prints 7.0 
+	//後運算先傳出值
+	car.speed++ 
+	println(car.speed) //prints 8.0 
+	car.speed--
+	car.speed--
+	println(car.speed) //prints: 6.0
