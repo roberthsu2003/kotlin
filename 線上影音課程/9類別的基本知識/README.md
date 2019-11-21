@@ -103,6 +103,7 @@ fun main() {
 	println("person 年齡:${person.name}");
 }
 ```
+
 ### kotlin使用更簡潔的主要建構式
 * 移除init區塊
 * 將init的程式區塊移至constructor後
@@ -319,16 +320,20 @@ class Fruit(var weight: Double, val fresh: Boolean) {
 }
 ```
 
-### property在class body被建立時可以type(使用推測)
-	class Fruit(var weight: Double, val fresh: Boolean) {
-	           //Int被省略
-	            var ecoRating = 3
-	}
+### property在class body被建立時可以省略型別(使用推測)
+	
+```kotlin
+class Fruit(var weight: Double, val fresh: Boolean) {
+	//Int被省略
+	var ecoRating = 3
+}
+```
 
 	
 ### 透過其它屬性計算出其它屬性值
 * 透透過其它屬性計算出其它屬性值
 * 不同的重量建立不同的ecoRating值
+
 ```kotlin
 class Apple(var weight: Double, val fresh: Boolean) {
 	var ecoRating: Int = when(weight) {
@@ -340,51 +345,114 @@ class Apple(var weight: Double, val fresh: Boolean) {
 	}
 }
 ```	
-### 建立屬性getter和setter
-	class Fruit(var weight: Double) {
-	            var ecoRating: Int = 3
-	            get() {
-	                println("getter value retrieved")
-	                return field //使用field 代表自已這個property
-	            }
-	            set(value) {
-	                field = if (value < 0) 0 else value
-	                println("setter new value assigned $field")
-	            }
+
+### 建立屬性get()和set(value)
+* 在get()和set(value)內使用field，代表這個property
+* 有自訂的getter和setter，要使用var
+
+```kotlin
+class Fruit(var weight: Double) {
+	var ecoRating: Int = 3
+	get() {
+		println("getter value retrieved")
+		return field //使用field 代表自已這個property
 	}
-	// Usage
+	set(value) {
+		field = if (value < 0) 0 else value
+		println("setter new value assigned $field")
+	}
+}
+
+fun main(){
 	val fruit = Fruit(12.0)
 	val ecoRating = fruit.ecoRating
 	// Prints: getter value retrieved
 	fruit.ecoRating = 3;
 	// Prints: setter new value assigned 3
 	fruit.ecoRating = -5;
-	// Prints: setter new value assigned 0
+	// Prints: setter new value assigned 0	
+}
+```
 	
 
-### 建立read-only get
-### heavy沒有真的值儲存，只是單獨計算
-	class Fruit(var weight: Double) {
-	          val heavy             // 1
-	          get() = weight > 20
-	      }
-	//usage
-	var fruit = Fruit(7.0)
-	println(fruit.heavy) //prints: false
-	fruit.weight = 30.5
-	println(fruit.heavy) //prints: true
+### 使用val和get()建立read-only的屬性
+* heavy沒有真的值儲存，只是單獨計算
+
+```kotlin
+class Fruit(var weight: Double) {
+	val heavy
+	get() = weight > 20
+}
+//usage
+var fruit = Fruit(7.0)
+println(fruit.heavy) //prints: false
+fruit.weight = 30.5
+println(fruit.heavy) //prints: true
+```
 
 ### 計算屬性
-	class Car {
-		var usable: Boolean = true 
-		var inGoodState: Boolean = true
-		//crashed property沒有field,囚為是計算所得的
-		var crashed: Boolean 		
-		get() = !usable && !inGoodState 	
-		set(value) { 
-			usable = false 
-			inGoodState = false 
-		}
+* crashed沒有實際儲存值
+
+```kotlin
+class Car {
+	var usable: Boolean = true 
+	var inGoodState: Boolean = true
+	//crashed property沒有field,因為是計算所得的
+	var crashed: Boolean 		
+	get() = !usable && !inGoodState 	
+	set(value) { 
+		usable = false 
+		inGoodState = false 
 	}
+}
+```
+
+---
+## 延遲初始化的屬性(lateinit)
+* 我們知道有一個屬性將不會是null,但一開始不會有值,在初始化後一定會有值
+
+### 一個android範例屬性button延後給值(不切實際的方法)
 
 
+```kotlin
+class MainActivity : AppCompatActivity() {
+	private var button: Button? = null
+	override fun onCreate(savedInstanceState: Bundle?) {
+	   super.onCreate(savedInstanceState)
+	   button = findViewById(R.id.button) as Button
+	}
+}
+```
+	
+
+### 一個android範例屬性button延後給值(正確的使用方法)
+* 必需是var
+* 必需是non-nullable
+*不行是primitive type
+
+```kotlin
+class MainActivity : AppCompatActivity() {
+	private lateinit var button: Button
+	override fun onCreate(savedInstanceState: Bundle?) {
+		button = findViewById(R.id.button) as Button
+		button.text = "Click Me"
+	} 
+}
+```
+
+
+---
+## inline 屬性
+
+	//inline是為了提升效能
+	//限制只可以使用在沒有backing filed的property
+	
+	inline val now:Long
+	 get() { 
+	 println("Time retrieved") 
+	 return System.currentTimeMillis() 
+	}
+	
+### inline compiler完後的bytecode
+	println("Time retrieved") 
+	return System.currentTimeMillis() 
