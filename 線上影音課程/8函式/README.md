@@ -1,3 +1,5 @@
+{{TOC}}
+
 # 函式(Function)
 ## 基本function定義與使用
 ``` kotlin
@@ -670,9 +672,10 @@ fun arithmethic(operator:String,firstValue:Int,secondValue:Int) = when(operator)
         println("$firstValue + $secondValue = ${firstValue + secondValue}")
 }
 ```
-* 呼叫java function不可以使用引數名稱
+- 呼叫java function不可以使用引數名稱
 
 ## 頂層函式
+頂層函式作用範圍是在package內
 
 ### 放在kt檔內，不在class內 
 
