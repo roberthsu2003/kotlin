@@ -81,22 +81,23 @@ fun main() {
 ### kotlin使用主要建構式
 * 主要建構式相對於次要建構式，是不可以有程式區塊，所以需要有init程式區塊
 
-	class Person constructor(name:String, age:Int){
-	            var name: String
-				    var age: Int
-	            init {
-	                this.name = name
-	                this.age = age
-	                println("person的實體被建立");
-				} 
-	}
-	
-	fun main() {
-	    val person = Person("robert",28);
-	    println("person 姓名:${person.name}");
-	    println("person 年齡:${person.name}");
-	}
+```kotlin
+class Person constructor(name:String, age:Int){
+	var name: String
+	var age: Int
+	init {
+		this.name = name
+		this.age = age
+		println("person的實體被建立");
+	} 
+}
 
+fun main() {
+	val person = Person("robert",28);
+	println("person 姓名:${person.name}");
+	println("person 年齡:${person.name}");
+}
+```
 ### kotlin使用更簡潔的主要建構式
 >移除init區塊，將參數直接給property
 
