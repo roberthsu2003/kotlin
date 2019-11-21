@@ -555,6 +555,8 @@ public static final State getState(@NotNull State state, int n)
 
 ## 引數預設值
 
+- 使用預設引數名稱,可以改變呼叫function時所需要的引數數量,基本上就取代overload的功能  
+
 ```kotlin
 fun main() {
 	 printValue("robert",true,"","")
