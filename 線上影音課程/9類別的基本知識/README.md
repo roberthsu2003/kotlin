@@ -24,33 +24,33 @@ fun main() {
 
 ```kotlin
 public class Person {
-			private int age;
-			private String name;
-			public Person(String name, int age) {
-			this.name = name;
-			this.age = age;
-			System.out.println("Person instance created");
-		}
-		public int getAge() {
-			return age;
-		}
-		public void setAge(int age) {
-			this.age = age;
-		}
-		public String getName() {
-			return name;
-		}
-		public void setName(String name) {
-			this.name = name;
-		} 
+	private int age;
+	private String name;
+	public Person(String name, int age) {
+	this.name = name;
+	this.age = age;
+	System.out.println("Person instance created");
+}
+public int getAge() {
+	return age;
+}
+public void setAge(int age) {
+	this.age = age;
+}
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+} 
 	
 }
 
 class Playground {
 	public static void main(String[ ] args) {
-	   Person person = new Person("robert",28);
-	   System.out.println("person name:" + person.getName());
-	   System.out.println("person age:" + person.getAge());
+		Person person = new Person("robert",28);
+		System.out.println("person name:" + person.getName());
+		System.out.println("person age:" + person.getAge());
 	}
 }
 ```
