@@ -444,15 +444,172 @@ class MainActivity : AppCompatActivity() {
 ---
 ## inline 屬性
 
-	//inline是為了提升效能
-	//限制只可以使用在沒有backing filed的property
-	
-	inline val now:Long
-	 get() { 
-	 println("Time retrieved") 
-	 return System.currentTimeMillis() 
-	}
+```kotlin
+//inline是為了提升效能
+//限制只可以使用在沒有backing filed的property
+
+inline val now:Long
+ get() { 
+ println("Time retrieved") 
+ return System.currentTimeMillis() 
+}
+```
 	
 ### inline compiler完後的bytecode
-	println("Time retrieved") 
-	return System.currentTimeMillis() 
+```kotlin
+println("Time retrieved") 
+return System.currentTimeMillis() 
+```
+
+## 9 constructors(建構式)
+### kotlin允許不用有任何的建構式
+```kotlin
+class Fruit(val weight:Int)
+```
+	
+### 一個主要建構式加上多個次要建構式, 次要建構式一定要委派給主要(this(weight))
+```
+//---------錯誤的-----
+//fresh是區域變數，不是property
+class Fruit1(val weight:Int){
+	constructor(weight:Int, fresh:Boolean):this(weight){
+		val fresh = fresh
+	}
+}
+//-----------------
+
+//--------正確的-----
+class Fruit(val weight: Int) {
+	constructor(weight: Int, fresh: Boolean) : this(weight) { }
+}
+//class instantiation
+val fruit1 = Fruit(10)
+val fruit2 = Fruit(10, true)
+```
+
+### 次要建構式內不可以建立屬性，一定要在類別的body區建立, 如果使用主建構式，fresh屬性一定要有值,
+
+```kotlin
+class Fruit(val weight: Int) {
+	var fresh: Boolean? = null
+	//define fresh property in class body
+	constructor(weight: Int, fresh: Boolean) : this(weight) {
+		this.fresh = fresh
+		//assign constructor parameter to fresh property
+	}
+ }
+
+val fruit = Fruit(10)
+println(fruit.weight) // prints: 10
+println(fruit.fresh) // prints: null
+```
+	
+
+### 如果要fresh是non-nullable,必需提供default value
+	
+```kotlin
+class Fruit(val weight: Int) {
+	var fresh: Boolean = true
+	constructor(weight: Int, fresh: Boolean) : this(weight) {
+		this.fresh = fresh
+	} 
+}
+val fruit = Fruit(10)
+println(fruit.weight) // prints: 10
+println(fruit.fresh) // prints: true
+```
+	
+### 當有主要建構式，次要建構式一定要call主要建構式(明確的)，(不明確的)次建構式呼叫其它次建構式
+```kotlin
+class Fruit(val weight: Int) {
+	val fresh:Boolean = false;
+	var color:String = "red";
+	constructor(weight: Int, fresh: Boolean) : 
+		this(weight) // 明確的
+	constructor(weight: Int, fresh: Boolean, color: String) :
+		this(weight, fresh) // 不明確的
+}
+```
+
+
+### 如果沒有主要建構式但有父類別，必需使用super()呼叫父類別的建構式
+```kotlin
+class ProductView : View {
+	constructor(ctx: Context) : super(ctx)
+	constructor(ctx: Context, attrs : AttributeSet) :
+		super(ctx, attrs)
+}
+```
+
+### default是public,有private,protected必需要有constructor()
+```kotlin
+class Fruit private constructor()
+```
+	
+### 有annotation也必需明確的有constructor()
+```kotlin
+class Fruit @Inject constructor()
+```
+
+### 有annotation和visibility modifier
+```
+class Fruit @Inject private constructor {
+	var weight: Int? = null
+}
+```
+### property對constructor parameter
+
+### 有val,var是類別實體屬性,沒有就是建構式參數
+```kotlin
+class Fruit(var weight:Double, fresh:Boolean)
+
+fun main(){
+	val fruit = Fruit(12.0, true)
+	println(fruit.weight)
+	// fresh是constructor parameter
+	//println(fruit.fresh) error,不是property
+}
+```
+	
+
+Class declaration  | Getter generated | Setter generated | Type
+------------- | ------------- | --------- | ------
+class Fruit(name:String) | NO | NO | Constructor parameter
+class Fruit (val name:String)  | YES | NO | Property
+class Fruit (var name:String) | YES | YES | Property
+
+## Constructor with default arguments(建構式使用預設引數值)
+
+### 有val,var是類別實體屬性,沒有就是建構式參數
+```kotlin
+class Fruit(var weight:Double, fresh:Boolean)
+val fruit = Fruit(12.0, true)
+println(fruit.weight)
+println(fruit.fresh) // error
+```
+	
+### 有default value
+	
+	```kotlin
+package lesson3_11
+
+class Fruit(var weight:Int=0, var fresh:Boolean=true, val color:String="green")
+
+fun main(){
+	val fruit = Fruit()
+	println(fruit.weight)
+	println(fruit.fresh)
+	println(fruit.color)
+
+	val fruit1 = Fruit(7, false)
+	println(fruit1.weight)
+	println(fruit1.fresh)
+	println(fruit1.color)
+
+	val fruit2 = Fruit(weight = 7, color = "Yellow", fresh = true)
+	println(fruit2.weight)
+	println(fruit2.fresh)
+	println(fruit2.color)
+}	
+	```
+

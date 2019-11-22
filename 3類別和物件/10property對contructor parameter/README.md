@@ -7,7 +7,7 @@
 	    val fruit = Fruit(12.0, true)
 	    println(fruit.weight)
 	    // fresh是constructor parameter
-	    //println(fruit.fresh)
+	    //println(fruit.fresh) error,不是property
 	}
 	
 
