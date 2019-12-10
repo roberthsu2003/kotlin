@@ -297,7 +297,6 @@ fragment.hasOptionsMenu = true // Error!
 
 ---
 ## 自訂的getter和setter
-
 ### 建立一個Fruit的class
 class Fruit(
 	var weight: Double,
@@ -306,8 +305,8 @@ class Fruit(
 )
 
 ### 建立自訂屬性的getter 和 setter
-* 必需移除參數內的var
-* 必需建立class body區塊
+- 必需移除參數內的var
+- 必需建立class body區塊
 
 ```kotlin
 class Fruit(var weight: Double, val fresh: Boolean, ecoRating: Int)
@@ -339,8 +338,8 @@ class Fruit(var weight: Double, val fresh: Boolean) {
 
 	
 ### 透過其它屬性計算出其它屬性值
-* 透透過其它屬性計算出其它屬性值
-* 不同的重量建立不同的ecoRating值
+- 透過其它屬性計算出其它屬性值
+- 不同的重量建立不同的ecoRating值
 
 ```kotlin
 class Apple(var weight: Double, val fresh: Boolean) {
@@ -355,8 +354,10 @@ class Apple(var weight: Double, val fresh: Boolean) {
 ```	
 
 ### 建立屬性get()和set(value)
+*get(),set()必需直接建立在ecoRating後方，並且在建立的敘述式結束時，不可以帶有;號
 * 在get()和set(value)內使用field，代表這個property
 * 有自訂的getter和setter，要使用var
+
 
 ```kotlin
 class Fruit(var weight: Double) {
@@ -416,8 +417,32 @@ class Car {
 ```
 
 ---
-## 延遲初始化的屬性(lateinit)
-* 我們知道有一個屬性將不會是null,但一開始不會有值,在初始化後一定會有值
+## 延遲初始化的屬性(lateinit和lazy)
+- 我們知道有一個屬性將不會是null,但一開始不會有值,在初始化後一定會有值
+- lateinit 只用於變數 var，而 lazy 只用於常數 val
+- lateinit不能用在nullable的屬性上和java的基本型別上
+
+```kotlin
+class Apple();
+
+val name: String by lazy { "Robert Hsu" }//正確
+
+fun main(){
+    class Fruit(){
+        lateinit var apple:Apple
+        fun createApple(){
+            apple = Apple();
+        }
+
+    }
+
+    var fruit = Fruit()
+    fruit.createApple();
+
+    println(name)
+
+}
+```
 
 ### 一個android範例屬性button延後給值(不切實際的方法)
 
