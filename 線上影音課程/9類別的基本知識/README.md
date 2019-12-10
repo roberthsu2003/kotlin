@@ -24,7 +24,7 @@ fun main() {
 
 ---
 
-## 類別屬性
+## 屬性
 ### java的類別定義
 
 ```java
@@ -35,20 +35,19 @@ public class Person {
 	this.name = name;
 	this.age = age;
 	System.out.println("Person instance created");
-}
-public int getAge() {
-	return age;
-}
-public void setAge(int age) {
-	this.age = age;
-}
-public String getName() {
-	return name;
-}
-public void setName(String name) {
-	this.name = name;
-} 
-	
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	} 	
 }
 
 class Playground {
@@ -61,9 +60,9 @@ class Playground {
 ```
 	
 ### kotlin的類別定義
-* 類別使用次要建構構式
-* constructor是class的次要建構式(secondary constructor)
-* getter和setter由kotlin自動建立的
+- 類別使用次要建構構式
+- constructor是class的次要建構式(secondary constructor)
+- getter和setter由kotlin自動建立的
 
 ```kotlin
 class Person {
@@ -84,7 +83,9 @@ fun main() {
 ```
 	
 ### kotlin使用主要建構式
-* 主要建構式相對於次要建構式，是不可以有程式區塊，所以需要有init程式區 
+- 將次要建構式移到class的後方，成為主要建構式  
+- 主要建構式相對於次要建構式，是沒有程式區塊，所以需要有init程式區   
+- init的程式內，可以使用主要建構式內的參數
 
 ```kotlin
 class Person constructor(name:String, age:Int){
@@ -105,9 +106,9 @@ fun main() {
 ```
 
 ### kotlin使用更簡潔的主要建構式
-* 移除init區塊
-* 將init的程式區塊移至constructor後
-* 將參數直接給property
+- 移除init區塊
+- 將init的程式區塊移至constructor後
+- 將參數直接給property
 
 ```kotlin
 class Person constructor(name:String, age:Int){
@@ -123,9 +124,9 @@ fun main() {
 ```
 
 ### kotlin使用再簡潔的主要建構式
-* 如果property沒有自訂的getter和setter可以在主要建構式上使用var,val
-* 將會建立property，並且將參數值給property
-* 可以省略主要建構式的程式區塊
+- 如果property沒有自訂的getter和setter可以在主要建構式上使用var,val
+- 將會建立property，並且將參數值給property
+- 可以省略主要建構式的程式區塊
 
 ```kotlin
 class Person constructor(var name:String,var age:Int)
@@ -171,8 +172,15 @@ fun main() {
 
 ## 可讀寫屬性vs唯讀屬性
 ### 使用var 和 val
-* **var** name屬性是可讀寫
-* **val** age屬性是只能讀
+- **var** name屬性是可讀寫
+- **val** age屬性是只能讀  
+
+
+| keyword | Read | Write |
+|:-------- |:---- |:-------| 
+| var | Yes | Yes |
+| val | Yes | No  |
+|沒支援| No | Yes |
 
 ```kotlin
 fun main() {
@@ -186,7 +194,7 @@ fun main() {
 	person.name = "Kate"
 	val age = person.age
 	person.age = 28 //錯誤,只可以讀
-	}
+}
 ```
 
 ### 使用var 和 val
@@ -614,427 +622,4 @@ fun main(){
 ```
 <br/><br/>
 --- 
-# Inheritance繼承
-### 明確宣告繼承和不明確宣告繼承
 
-- kotlin的原始父類別為Any,java的原始父類別為object。所有kotlin的類別預設皆繼承Any  
-  
-- kotlin就像java一樣，只支援單一繼承，所以每個類別只可以有一個父類別。但是可以實作多個介面
-
-
-### 明確宣告繼承和不明確宣告繼承
-
-- class Plant // 不明確宣告繼承Any
-
-- class Plant : Any // 不明確宣告繼承Any
-
-
-### 預設class是final不能繼承, method也是final不能override
-
-- 不同於java, kotlin的每個class和method，預設是final
-
-
-```kotlin
-class Plant
-class Tree : Plant() // 繼承錯誤,kotlin的class預設是final
-```
-
-### final的相反是open
-
-- kotlin的繼承是使用冒號字元.java是使用extends or implements
-- 
-```kotlin
-- open class Plant
-- class Tree : Plant()
-```
-
-### final method不可以override
-
-```kotlin
-//class明確使用open才可以被繼承
-open class Plant {
-	var height: Int = 0
-	fun grow(height: Int) {}
-}
-
-class Tree : Plant() {
-	override fun grow(height: Int) { // 出錯:Plant內的fun grow預設是final 
-		this.height += height
-	}
-}
-```	
-
-### 可以override
-
-```kotlin
-open class Plant {
-	 var height: Int = 0
-	 open fun grow(height: Int) {}
- }
- 
-class Tree : Plant() {
-	  override fun grow(height: Int) {
-	      this.height += height
-	  }
-}
-```
-
-### 可以override height屬性
-
-```kotlin
-open class Plant {
-	open var height: Int = 0
-	open fun grow(height: Int) {}
-}
-
-class Tree : Plant() {
-	override var height: Int = super.height
-	get() = super.height
-	set(value) { field = value}
-	
-	override fun grow(height: Int) {
-		this.height += height
-	} 
-}
-```
-
-### 使用final
-
-```kotlin
-open class Plant {
-	var height: Int = 0
-	open fun grow(height: Int) {}
-}
-
-open class Tree : Plant() { //class 的open要明確的宣告
-	//使用final關閉open,如果沒有宣告,未來所有繼承的子類別都可以override
-	final override fun grow(height: Int) { 
-		this.height += height
-	}
-}
-
-class Oak : Tree() { //
-	// 不行再override fun grow
-}
-```
-
-### abstract class,method
-
-- 抽象類別不充許實體化，只可以被繼承。預設自已是open，裏面所有的member預設也是open
-- 抽象method不充許實作body。只充許子類別使用override實作
-
-```kotlin
-abstract class Plant {
-	var height: Int = 0
-	abstract fun grow(height: Int)
-}
-class Tree : Plant() {
-	override fun grow(height: Int) {
-		this.height += height
-	}
-}
-
-val plant = Plant() // 錯誤:抽象類別不可以被實體化
-val tree = Tree()
-```	      
-### data class
-- 使用data class會讓kotlin的compiler自動幫class產一些methods(equals,hasCode,toString,copy,componentN)
-- data class不可以是inner,abstract,sealed class
-
-```kotlin
-data class Product(var name:String, var price:Double)
-
-
-fun main(){
-	val productA = Product("spoon",30.2)
-	val productB = Product("spoon",30.2)
-	val productC = Product("Fork",17.4)
-
-	println(productA == productA)  // prints: true
-	println(productA == productB)  // prints: true
-	println(productA == productC)  // prints: false
-	println(productA) //Product(name=Spoon, price=30.2)
-	println(productC) // Product(name="Fork",price=17.4)		
-}
-```
-
-- copy
-
-```kotlin
-data class Product(var name:String, var price:Double)
-
-
-fun main(){
-	val productA = Product("spoon",30.2)
-	val productB = Product("spoon",30.2)
-	val productC = Product("Fork",17.4)
-
-	val productA = Product("Spoon", 30.2) 
-	print(productA) // prints: Product(name=Spoon, price=30.2)
-	
-	val productB = productA.copy() 
-	print(productB) // prints: Product(name=Spoon, price=30.2)
-	
-	val productB = Product(productA)			
-}
-```
-
-- Mutable object - modify object state
-
-```kotlin
-data class Product(var name:String, var price:Double)
-var productA = Product("Spoon", 30.2) 
-productA.name = "Knife"
-```
-- Immutable object
-```kotlin
-Product(val name:String, val price:Double)
-var productA = Product("Spoon", 30.2) 
-productA = productA.copy(name = "Knife")
-```
-
-# Destructive declaration 拆解的宣告
-
-## data class 的拆解宣告
-- 將物件的property拆解出來成為變數
-
-```kotlin
-data class Person(val firstName: String, val lastName: String,val height: Int)
-val person = Person("Igor", "Wojda", 180)
-var (firstName, lastName, height) = person
-println(firstName) // prints: "Igor"
-println(lastName) // prints: "Wojda"
-println(height) // prints: 180
-```
-
-### 使用componentN()拆解
-
-```kotlin
-val person = Person("Igor", "Wojda", 180)
-var firstName = person.component1()
-var lastName = person.component2()
-var height = person.component3()
-```
-	
-
-### 使用底線省略
-	
-```kotlin
-val person = Person("Igor", "Wojda", 180)
-var (firstName, _, height) = person
-println(firstName) // prints: "Igor"
-println(height) // prints: 180
-```
-	
-### 拆解字串
-```kotlin
-val file = "MainActivity.kt"
-val (name, extension) = file.split(".", limit = 2)
-```
-	
-### 拆解和for一起使用
-```kotlin
-val authors = listOf(
-	       Person("Igor", "Wojda", 180),
-	       Person("Marcin", "Moskała", 180)
-)
-println("Authors:")
-for ((name, surname) in authors) {
-	 println("$name $surname")
-}
-```
-
-# Operator overloading運算子覆載
-
-- 內建方法呼叫，取代運算子
-
-| operatior token | corresponding method |
-| ----------- | ------------- |
-| a + b | a.plus(b) |
-| a - b | a.minus(b) |
-| a * b | a.times(b) |
-| a / b | a.div(b) |
-| a % b | a.rem(b) |
-| a..b | a.rangeTo(b) |
-| a += b | a.plusAssign(b) |
-| a -= b | a.minusAssign(b) |
-| a *= b | a.timesAssign(b) |
-| a /= b | a.divAssign(b) |
-
-
-```kotlin
-data class Point(var x: Double, var y: Double) {
-	operator fun plus(point: Point) = Point(x + point.x, y+ point.y)
-	operator fun times(other: Int) = Point(x * other, y * other)
-}
-
-//usage
-var p1 = Point(2.9, 5.0)
-var p2 = Point(2.0, 7.5)
-println(p1 + p2)     // prints: Point(x=4.9, y=12.5)
-println(p1 * 3)      // prints: Point(x=8.7, y=15.0)
-```
-
-### 也可以這樣寫
-
-```kotlin
-p1.plus(p2)
-p1.times(3)
-```
-
-### 運算子沒有繼承，可以overload
-- 運算子method不是override父類別的運算子，所以沒有固定的參數和資料類型。而是overload. 只需要對應的運算子method名稱和前面加一個關鍵字operator
-- 事實上，我們也可以定義多個相同的運算子method，但使用不同的參數類型
-
-```kotlin
-data class Point(var x: Double, var y: Double) {
-	operator fun plus(point: Point) = Point(x + point.x, y +point.y)
-	operator fun plus(vector:Double) = Point(x + vector, y + vector)
-}
-var p1 = Point(2.9, 5.0)
-var p2 = Point(2.0, 7.5)
-
-//compiler可以自動找適合的overload的運算子
-println(p1 + p2) // prints: Point(x=4.9, y=12.5)
-println(p1 + 3.1) // prints: Point(x=6.0, y=10.1)
-
-```
-
-### 如果有定義 + 運算子method, 則就同的支援 += 組合運算子method
-
-```kotlin
-	var p1 = Point(2.9, 7.0)
-	var p2 = Point(2.0, 7.5)
-	p1 += p2
-	println(p1) // prints: Point(x=4.9, y=14.5)
-```
-
-### 會錯誤
-- 同時定義 plus and plus method , 並且使用相的的參數類型將會出錯
-
-```kotlin
-data class Point(var x:Double, var y:Double){
-	init{
-	   println("PLoint created $x.$y");
-	}
-	
-	operator fun plus(point:Point) = Point(x + point.x, y + point.y);
-	operator fun plusAssign(point:Point){
-	   x += point.x;
-	   y += point.y;
-	}
-}
-   
-var p1 = Point(2.9, 7.0);
-var p2 = Point(2.0, 7.5);
-val p3 = p1 + p2;
-println("$p1, $p2, $p3");
-//p1 += p2 ;錯誤
-```
-
-### 使用 object declarations 定義singleton的 class 簡單好用
-- object declarations是lazy initialize
-- 它可以巢狀在其它的object declaration內或 non-inner class - 
-- 它們不可以指定給變數
-
-```kotlin
-object SQLiteSingleton {
-	fun getAllUsers(): List<Int> { 
-	 return listOf(3, 4, 5, 6)
-	}
-}
-
-fun main() {
-    print(SQLiteSingleton.getAllUsers())
-}
-```
----
-# Object expression(暱名class)
-- Object expression 等同是 Java's anonymous class
-```kotlin
-//java
-ServiceConnection serviceConnection = new ServiceConnection() {
-	@Override
-	public void onServiceDisconnected(ComponentName name) {
-	...
-	}
-	@Override
-	public void onServiceConnected(ComponentName name,IBinder service){
-	... 
-	}
-
-}
-
-//kotlin
-val serviceConnection = object: ServiceConnection {
-	     override fun onServiceDisconnected(name: ComponentName?) { }
-	     override fun onServiceConnected(name: ComponentName?, service: IBinder?) { }
-}
-```
-	
-### 使用object expression
-- 快速建立一個暱名class並且立刻建一個實體
-
-```kotlin
-interface Player {
-	fun play()
-}
-
-fun playWith(player: Player) {
-	print("I play with")
-	player.play()
-}
-
-open class VideoPlayer {
-	fun play() {
-	    println("Play video")
-	}
-}
-
-//object被建立於暱名class，這暱名class繼承VideoPlayer和實作Player介面
-
-val player = object: VideoPlayer(), Player { }
-playWith(player)
-```
-	
-### 使用object expression 快速建立暱名class繼承Any
-- 快速建立一個實體，有自訂property和自訂的method(無法使用java,因為java一定要有一個自訂的interface)
-
-```kotlin
-
-fun main(){
-	val data = object{
-		var size = 1
-		fun update(){
-			print("update的size是$size")
-		}		
-	}
-	
-	data.size = 2
-	data.update()
-}
-```
-	
-### 有自訂interface, java才可以使用
-
-```kotlin
-open class VideoPlayer {
-	fun play() {
-		println("Play video")	
-}
-interface Player{
-	fun play()
-	fun stop() 
-}
-//usage
-val player = object: VideoPlayer(), Player {
-	var duration:Double = 0.0
-	fun stop() {
-		println("Stop  video")
-	} 
-}
-player.play() // println("Play video")
-player.stop() // println("Stop  video")
-player.duration = 12.5
-```
-   
