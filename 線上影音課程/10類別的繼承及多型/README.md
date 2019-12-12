@@ -10,8 +10,13 @@
 
 - class Plant // 不明確宣告繼承Any
 
-- class Plant : Any // 不明確宣告繼承Any
-
+- class Plant : Any() // 不明確宣告繼承Any
+```kotlin
+fun main(){
+    class Plant;
+    class Plant1: Any();
+}
+```
 
 ### 預設class是final不能繼承, method也是final不能override
 
@@ -25,8 +30,10 @@ class Tree : Plant() // 繼承錯誤,kotlin的class預設是final
 
 ### final的相反是open
 
-- kotlin的繼承是使用冒號字元.java是使用extends or implements
-- 
+- kotlin的繼承是使用冒號字元.
+
+- java是使用extends or implements
+
 ```kotlin
 - open class Plant
 - class Tree : Plant()
@@ -48,7 +55,7 @@ class Tree : Plant() {
 }
 ```	
 
-### 可以override
+### open method()可以override
 
 ```kotlin
 open class Plant {

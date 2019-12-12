@@ -647,4 +647,118 @@ fun main(){
 ```
 <br/><br/>
 --- 
+## 次要建構式
+### 一個class 可以有多個次要建構式
+```kotlin
+class Rectangle{
+    var width:Int
+    var height:Int
+    var color = "red"
+    constructor(width:Int,height:Int){
+        this.width = width;
+        this.height = height;
+    }
+    constructor(width:Int,height:Int,color:String){
+        this.width = width
+        this.height = height
+        this.color = color;
+    }
+
+    fun descripton(){
+        println("width=${width}, height=${height}, color=${color}")
+    }
+}
+
+fun main(){
+	val rec1 = Rectangle(50,60)
+	rec1.descripton();
+	
+	var rec2 = Rectangle(50,60,"blue")
+	rec2.descripton();
+}
+```
+
+### 同時有主要和次要,次要建構式必需使用this()呼叫主要建構式
+
+```kotlin
+class Circle(var radius:Int){
+    var alpha:Float = 1.0f;
+    constructor (radius:Int,alpha:Float):this(radius){
+        this.alpha = alpha
+    }
+
+    fun descripton(){
+        println("radius=${radius}, alpha=${alpha}")
+    }
+}
+fun main(){
+	var cir1 = Circle(32)
+	cir1.descripton()
+	
+	var cir2 = Circle(30,0.5f)
+	cir2.descripton()
+}
+```
+
+### 次要建構式呼叫次要建構式
+
+```kotlin
+class Rectangle1{
+    var width:Int
+    var height:Int
+    var color = "red"
+    constructor(width:Int,height:Int){
+        this.width = width;
+        this.height = height;
+    }
+    constructor(width:Int,height:Int,color:String):this(width,height){
+        this.width = width
+        this.height = height
+        this.color = color;
+    }
+
+    fun descripton(){
+        println("width=${width}, height=${height}, color=${color}")
+    }
+}
+
+fun main(){
+	val rec3 = Rectangle1(width = 80, height = 80, color = "blue");
+    rec3.descripton();
+}
+```
+
+### 使用super呼叫父類別的constructor
+```kotlin 
+fun main(){
+	open class Vehicle(){
+	    var numberOfWheels = 0
+	    open val description:String
+	        get() {
+	           return "${numberOfWheels} wheel(s)"
+	        }
+	}
+	
+	
+	val vehicle = Vehicle();
+	println(vehicle.description)
+	
+	class Bicycle:Vehicle{
+	    constructor():super(){
+	        numberOfWheels = 2
+	    }
+	}
+	
+	val bicycle = Bicycle()
+	println("Bicycle:${bicycle.description}")
+	
+	class Hoverboard(var color:String):Vehicle(){
+	    override val description: String
+	        get() = "${super.description} in a beautiful $color"
+	}
+	
+	val hoverboard = Hoverboard("silver");
+	println("Hoverboard:${hoverboard.description}");
+}
+```
 
