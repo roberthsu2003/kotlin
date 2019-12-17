@@ -104,7 +104,37 @@ fun main() {
 	println("person 年齡:${person.name}");
 }
 ```
+### kotlin的實體method
+- 語法和建立函式一樣
+- 只有該class 建立的實體才可以執行
+```kotlin
+fun main(){
+    class Circle{
+        var pi = 3.14
+        var radius:Double
 
+        constructor(radius:Double){
+            this.radius = radius
+        }
+
+        fun show_area(){
+            println("area=${pi * radius * radius}")
+        }
+
+        fun show_all(){
+            println("radius=$radius")
+            show_area();
+        }
+    }
+
+    val circle1 = Circle(30.0)
+    circle1.show_all()
+
+    println("==================")
+    val circle2 = Circle(60.0)
+    circle2.show_all()
+}
+```
 ### kotlin使用更簡潔的主要建構式
 - 移除init區塊
 - 將init的程式區塊移至constructor後
